@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                 text_hello_world.mClickHandled = false;
                 return@setOnClickListener
             }
-            Toast.makeText(MainActivity@ this, "你点击了TextView", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, "你点击了TextView", Toast.LENGTH_SHORT).show()
         }
 
         text_hello_world.setTextClickListener(object : ClickSpanTextView.TextClickListener {
