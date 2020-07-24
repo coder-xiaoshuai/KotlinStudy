@@ -10,6 +10,7 @@
         android:id="@+id/text_hello_world"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="学习kotlin的第一天 hello world!"
         android:gravity="center"
         app:clickText="hello world!"
