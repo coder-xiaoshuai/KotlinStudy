@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -93,5 +94,27 @@ public class GlobalConfig {
             return (Activity) context;
         }
         return null;
+    }
+
+    /**
+     * 当前activity 是否已经销毁
+     *
+     * @param context
+     * @return
+     */
+    public static boolean contextExist(Context context) {
+        if (context == null) {
+            return false;
+        }
+        if ((context instanceof Activity)) {
+            Activity activity = ((Activity) context);
+            if (activity.isFinishing()) {
+                return false;
+            }
+            if (Build.VERSION.SDK_INT >= 17) {
+                return !activity.isDestroyed();
+            }
+        }
+        return true;
     }
 }

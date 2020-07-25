@@ -29,10 +29,12 @@ task clean(type: Delete) {
 ext {
     // Third-part library
     dependencies = [
-            recyclerview  : 'androidx.recyclerview:recyclerview:1.2.0-alpha05',
+            recyclerview             : 'androidx.recyclerview:recyclerview:1.2.0-alpha05',
 
 
-            statusbar_util: 'com.jaeger.statusbarutil:library:1.5.1'
+            statusbar_util           : 'com.jaeger.statusbarutil:library:1.5.1',
+            glide                    : 'com.github.bumptech.glide:glide:4.11.0',
+            glide_annotationProcessor: 'com.github.bumptech.glide:compiler:4.11.0'
 
     ]
 }
