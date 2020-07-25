@@ -35,4 +35,7 @@ dependencies {
 
     implementation project(path: ':common')
 
+    def dependencies = rootProject.ext.dependencies
+    implementation dependencies.statusbar_util
+
 }
