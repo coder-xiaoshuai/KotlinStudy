@@ -25,3 +25,11 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    // Third-part library
+    dependencies = [
+            recyclerview: 'androidx.recyclerview:recyclerview:1.2.0-alpha05'
+
+    ]
+}
