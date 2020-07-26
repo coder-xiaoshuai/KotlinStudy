@@ -14,7 +14,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import com.example.kotlinstudy.R
 
-class ClickSpanTextView : AppCompatTextView {
+open class ClickSpanTextView : AppCompatTextView {
     private var textClickListener: TextClickListener? = null
     private var clickText: String? = null
     private var clickTextColor: Int = Color.BLUE
