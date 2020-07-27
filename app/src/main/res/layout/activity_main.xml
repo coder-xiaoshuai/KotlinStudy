@@ -6,21 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.kotlinstudy.view.ClickSpanTextView
-        android:id="@+id/text_hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/shape_main_text_tip"
-        android:gravity="center"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:text="学习kotlin的第一天 hello world!"
-        android:textSize="20sp"
-        app:clickText="hello world!"
-        app:clickTextColor="@color/colorAccent"
+    <com.example.kotlinstudy.view.DragLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/drag_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.example.kotlinstudy.view.ClickSpanTextView
+                android:id="@+id/text_hello_world"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_main_text_tip"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="学习kotlin的第一天 hello world!"
+                android:textSize="20sp"
+                app:clickText="hello world!"
+                app:clickTextColor="@color/colorAccent" />
+
+        </RelativeLayout>
+    </com.example.kotlinstudy.view.DragLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
