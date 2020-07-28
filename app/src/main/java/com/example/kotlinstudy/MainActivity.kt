@@ -2,6 +2,7 @@ package com.example.kotlinstudy
 
 import android.os.Bundle
 import android.util.Log
+import com.example.common.utils.CommonSpUtils
 import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.bean.BaseResult
@@ -17,11 +18,8 @@ import retrofit2.Response
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         initView()
-
         apiTest()
-
     }
 
     override fun getLayoutId(): Int {
