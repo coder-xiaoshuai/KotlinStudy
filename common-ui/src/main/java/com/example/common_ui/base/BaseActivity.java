@@ -1,7 +1,6 @@
 package com.example.common_ui.base;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
@@ -23,13 +22,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected BaseFragment fragment;
 
-    private static final int DEFAULT_ALPHA = 0;
+    private static final int DEFAULT_ALPHA = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        StatusBarUtil.setLightMode(this);
+//        StatusBarUtil.setLightMode(this);
         StatusBarUtil.setColor(this, getStatusBarColor(), DEFAULT_ALPHA);
         GlobalConfig.setCurrentActivity(this);
     }
