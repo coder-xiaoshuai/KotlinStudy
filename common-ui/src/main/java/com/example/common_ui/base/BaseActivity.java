@@ -3,6 +3,7 @@ package com.example.common_ui.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,7 +19,7 @@ import com.jaeger.library.StatusBarUtil;
  *
  * @author zhangshuai
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener{
 
     protected BaseFragment fragment;
 
@@ -127,5 +128,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

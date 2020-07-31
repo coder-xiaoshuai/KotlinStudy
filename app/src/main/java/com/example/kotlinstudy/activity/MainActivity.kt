@@ -1,10 +1,12 @@
-package com.example.kotlinstudy
+package com.example.kotlinstudy.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import com.example.common.utils.CommonSpUtils
+import android.view.View
 import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
+import com.example.kotlinstudy.R
 import com.example.kotlinstudy.bean.BaseResult
 import com.example.kotlinstudy.bean.Chapter
 import com.example.kotlinstudy.net.KotlinStudyApi
@@ -19,6 +21,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+        initButtons()
         apiTest()
     }
 
@@ -55,6 +58,10 @@ class MainActivity : BaseActivity() {
         })
     }
 
+    private fun initButtons(){
+        btn_kotlin_study.setOnClickListener(this)
+    }
+
     private fun apiTest() {
         KotlinStudyApi.api?.requestChapters()?.enqueue(object :
             Callback<BaseResult<List<Chapter>>> {
@@ -66,5 +73,16 @@ class MainActivity : BaseActivity() {
                 Log.i("zs", "请求成功")
             }
         })
+    }
+
+
+    //统一处理点击事件
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_kotlin_study -> {
+                val intent = Intent(this, GrammarStudyActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }

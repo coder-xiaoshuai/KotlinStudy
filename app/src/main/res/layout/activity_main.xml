@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <TextView
         android:id="@+id/tv_title"
@@ -28,6 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_kotlin_study"
+                style="@style/main_button_common_style"
+                android:text="kotlin语法学习" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
