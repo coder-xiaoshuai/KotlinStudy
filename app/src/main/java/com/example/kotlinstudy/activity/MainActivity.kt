@@ -22,7 +22,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         initView()
         initButtons()
-        apiTest()
     }
 
     override fun getLayoutId(): Int {
@@ -60,19 +59,7 @@ class MainActivity : BaseActivity() {
 
     private fun initButtons(){
         btn_kotlin_study.setOnClickListener(this)
-    }
-
-    private fun apiTest() {
-        KotlinStudyApi.api?.requestChapters()?.enqueue(object :
-            Callback<BaseResult<List<Chapter>>> {
-            override fun onFailure(call: Call<BaseResult<List<Chapter>>>, t: Throwable) {
-                Log.i("zs", "请求失败")
-            }
-
-            override fun onResponse(call: Call<BaseResult<List<Chapter>>>, response: Response<BaseResult<List<Chapter>>>) {
-                Log.i("zs", "请求成功")
-            }
-        })
+        btn_api_test.setOnClickListener(this)
     }
 
 
@@ -81,6 +68,11 @@ class MainActivity : BaseActivity() {
         when (v?.id) {
             R.id.btn_kotlin_study -> {
                 val intent = Intent(this, GrammarStudyActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btn_api_test ->{
+                val intent = Intent(this,AuthorListActivity::class.java)
                 startActivity(intent)
             }
         }

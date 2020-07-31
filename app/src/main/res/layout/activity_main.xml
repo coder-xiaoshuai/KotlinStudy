@@ -34,6 +34,11 @@
                 style="@style/main_button_common_style"
                 android:text="kotlin语法学习" />
 
+            <Button
+                android:id="@+id/btn_api_test"
+                style="@style/main_button_common_style"
+                android:text="网络请求测试" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
