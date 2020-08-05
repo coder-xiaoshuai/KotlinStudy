@@ -8,15 +8,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.activity.ArticleListActivity
+import com.example.kotlinstudy.bean.Article
 import com.example.kotlinstudy.bean.PublicInfo
 import com.example.kotlinstudy.utils.Constant
 import kotlinx.android.synthetic.main.item_rv_recommend_author.view.*
 
-class AuthorListAdapter(var context: Context, var list: ArrayList<PublicInfo>? = null) :
-    RecyclerView.Adapter<AuthorListAdapter.AuthorViewHolder>() {
+class ArticleListAdapter(var context: Context, var list: ArrayList<Article>? = null) :
+    RecyclerView.Adapter<ArticleListAdapter.ArticleViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AuthorViewHolder {
-        return AuthorViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
+        return ArticleViewHolder(
             LayoutInflater.from(context).inflate(R.layout.item_rv_recommend_author, parent, false)
         )
     }
@@ -25,17 +26,12 @@ class AuthorListAdapter(var context: Context, var list: ArrayList<PublicInfo>? =
         return list?.size ?: 0
     }
 
-    override fun onBindViewHolder(holder: AuthorViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         with(holder.itemView) {
-            author_name.text = list?.get(position)?.name
-        }
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, ArticleListActivity::class.java)
-            intent.putExtra(Constant.INTENT_KEY_ID, list?.get(position)?.id ?: 405)
-            context.startActivity(intent)
+            author_name.text = list?.get(position)?.title
         }
     }
 
-    class AuthorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 }

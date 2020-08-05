@@ -1,6 +1,9 @@
 package com.example.kotlinstudy.bean
 
-class Chapter {
+/**
+ * 公众号信息
+ */
+class PublicInfo {
     /**
      * children : []
      * courseId : 13

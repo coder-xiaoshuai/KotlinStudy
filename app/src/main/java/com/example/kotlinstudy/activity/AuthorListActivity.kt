@@ -7,7 +7,7 @@ import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.adapter.AuthorListAdapter
 import com.example.kotlinstudy.bean.BaseResult
-import com.example.kotlinstudy.bean.Chapter
+import com.example.kotlinstudy.bean.PublicInfo
 import com.example.kotlinstudy.net.KotlinStudyApi
 import kotlinx.android.synthetic.main.activity_author_list.*
 import retrofit2.Call
@@ -31,15 +31,15 @@ class AuthorListActivity : BaseActivity() {
     private fun getAuthorList() {
         //网络请求  如果是请求玩安卓的可以直接使用api去使用 baseUrl已经写死  如果想自定义baseUrl可以直接使用KotlinStudyApi.singleCustomRequest
         KotlinStudyApi.api?.requestChapters()?.enqueue(object :
-            Callback<BaseResult<List<Chapter>>> {
-            override fun onFailure(call: Call<BaseResult<List<Chapter>>>, t: Throwable) {
+            Callback<BaseResult<List<PublicInfo>>> {
+            override fun onFailure(call: Call<BaseResult<List<PublicInfo>>>, t: Throwable) {
                 Log.i("zs", "请求失败")
             }
 
-            override fun onResponse(call: Call<BaseResult<List<Chapter>>>, response: Response<BaseResult<List<Chapter>>>) {
+            override fun onResponse(call: Call<BaseResult<List<PublicInfo>>>, response: Response<BaseResult<List<PublicInfo>>>) {
                 if (response.isSuccessful) {
                     rv_author_list.layoutManager = LinearLayoutManager(this@AuthorListActivity, LinearLayoutManager.VERTICAL, false)
-                    rv_author_list.adapter = AuthorListAdapter(this@AuthorListActivity, response.body()?.data as ArrayList<Chapter>?)
+                    rv_author_list.adapter = AuthorListAdapter(this@AuthorListActivity, response.body()?.data as ArrayList<PublicInfo>?)
                 }
             }
         })

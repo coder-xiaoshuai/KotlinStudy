@@ -2,20 +2,13 @@ package com.example.kotlinstudy.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
-import com.example.kotlinstudy.bean.BaseResult
-import com.example.kotlinstudy.bean.Chapter
-import com.example.kotlinstudy.net.KotlinStudyApi
 import com.example.kotlinstudy.utils.DateUtils
 import com.example.kotlinstudy.view.ClickSpanTextView
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

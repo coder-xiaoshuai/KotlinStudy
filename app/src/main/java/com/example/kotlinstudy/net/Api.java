@@ -1,16 +1,31 @@
 package com.example.kotlinstudy.net;
 
+import com.example.kotlinstudy.bean.Article;
+import com.example.kotlinstudy.bean.ArticleWrapper;
 import com.example.kotlinstudy.bean.BaseResult;
-import com.example.kotlinstudy.bean.Chapter;
+import com.example.kotlinstudy.bean.PublicInfo;
 
 import java.util.List;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface Api {
 
+    /**
+     * 获取公众号列表
+     *
+     * @return
+     */
     @GET("/wxarticle/chapters/json")
-    Call<BaseResult<List<Chapter>>> requestChapters();
+    Call<BaseResult<List<PublicInfo>>> requestChapters();
+
+    /**
+     * 获取文章列表
+     *
+     * @return
+     */
+    @GET("/wxarticle/list/{id}/{page}/json")
+    Call<BaseResult<ArticleWrapper>> getArticleList(@Path("id") int id, @Path("page") int page);
 }

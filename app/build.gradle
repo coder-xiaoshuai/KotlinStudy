@@ -49,4 +49,9 @@ dependencies {
     implementation dependencies.retrofit
     implementation dependencies.retrofit_convert
     implementation dependencies.photo_lib
+
+    implementation dependencies.smart_refresh_layout
+    implementation dependencies.refresh_header_classics
+    implementation dependencies.refresh_header_material
+    implementation dependencies.refresh_footer_classics
 }
