@@ -8,13 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinstudy.R
-import com.example.kotlinstudy.activity.ArticleListActivity
+import com.example.kotlinstudy.activity.WebPageActivity
 import com.example.kotlinstudy.bean.Article
-import com.example.kotlinstudy.bean.PublicInfo
-import com.example.kotlinstudy.utils.Constant
 import com.example.kotlinstudy.utils.GlideUtils
 import kotlinx.android.synthetic.main.item_rv_recommend_article.view.*
-import kotlinx.android.synthetic.main.item_rv_recommend_author.view.*
 
 class ArticleListAdapter(var context: Context, var list: ArrayList<Article>? = null) :
     RecyclerView.Adapter<ArticleListAdapter.ArticleViewHolder>() {
@@ -40,7 +37,12 @@ class ArticleListAdapter(var context: Context, var list: ArrayList<Article>? = n
             } else {
                 image_cover.visibility = View.GONE
             }
+        }
 
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context,WebPageActivity::class.java)
+            intent.putExtra(WebPageActivity.INTENT_KEY_URL,list?.get(position)?.link)
+            context.startActivity(intent)
         }
     }
 
