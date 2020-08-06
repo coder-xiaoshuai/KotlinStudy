@@ -5,6 +5,7 @@ import android.net.http.SslError
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.webkit.*
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
@@ -72,6 +73,7 @@ class WebPageActivity : BaseActivity() {
                 handler?.proceed();    //表示等待证书响应
             }
         }
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE,null);//开启硬件加速
 
         //声明WebSettings子类
         val webSettings: WebSettings = webView.settings
