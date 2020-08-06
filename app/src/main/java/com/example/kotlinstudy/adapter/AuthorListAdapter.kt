@@ -32,6 +32,7 @@ class AuthorListAdapter(var context: Context, var list: ArrayList<PublicInfo>? =
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ArticleListActivity::class.java)
             intent.putExtra(Constant.INTENT_KEY_ID, list?.get(position)?.id ?: 405)
+            intent.putExtra(Constant.INTENT_KEY_AUTHOR, list?.get(position)?.name ?: "文章列表")
             context.startActivity(intent)
         }
     }
