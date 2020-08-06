@@ -15,12 +15,16 @@ import kotlinx.android.synthetic.main.activity_web_page.*
 class WebPageActivity : BaseActivity() {
     companion object {
         const val INTENT_KEY_URL = "web_page_url"
+        const val INTENT_KEY_TITLE = "web_page_title"
     }
+
+    private var title: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initWebView()
         var pageUrl = intent.getStringExtra(INTENT_KEY_URL)
+        title = intent.getStringExtra(INTENT_KEY_TITLE)
         if (!TextUtils.isEmpty(pageUrl)) {
             webView.loadUrl(pageUrl)
         }
@@ -35,7 +39,9 @@ class WebPageActivity : BaseActivity() {
 
             override fun onReceivedTitle(view: WebView?, title: String?) {
                 super.onReceivedTitle(view, title)
-                tv_title.text = title
+                if (TextUtils.isEmpty(this@WebPageActivity.title)) {
+                    tv_title.text = title
+                }
             }
 
             /**
@@ -73,7 +79,7 @@ class WebPageActivity : BaseActivity() {
                 handler?.proceed();    //表示等待证书响应
             }
         }
-        webView.setLayerType(View.LAYER_TYPE_HARDWARE,null);//开启硬件加速
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);//开启硬件加速
 
         //声明WebSettings子类
         val webSettings: WebSettings = webView.settings

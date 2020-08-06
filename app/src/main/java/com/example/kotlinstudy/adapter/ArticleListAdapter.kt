@@ -42,6 +42,7 @@ class ArticleListAdapter(var context: Context, var list: ArrayList<Article>? = n
         holder.itemView.setOnClickListener{
             val intent = Intent(context,WebPageActivity::class.java)
             intent.putExtra(WebPageActivity.INTENT_KEY_URL,list?.get(position)?.link)
+            intent.putExtra(WebPageActivity.INTENT_KEY_TITLE,"文章详情")
             context.startActivity(intent)
         }
     }
