@@ -12,21 +12,19 @@ import com.example.kotlinstudy.R
 class SplashActivity : BaseActivity() {
     private var handler = Handler()
     override fun onCreate(savedInstanceState: Bundle?) {
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
         super.onCreate(savedInstanceState)
-//        fullScreenAdapt()
+        fullScreenAdapt()
         handler.postDelayed({
             gotoMain()
         }, 2000)
     }
 
     override fun getLayoutId(): Int {
-
         return R.layout.activity_splash
+    }
+
+    override fun initStatusBarColor() {
+        //不做处理 防止对全屏造成影响
     }
 
     /**

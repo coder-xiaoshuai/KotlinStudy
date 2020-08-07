@@ -19,7 +19,7 @@ import com.jaeger.library.StatusBarUtil;
  *
  * @author zhangshuai
  */
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected BaseFragment fragment;
 
@@ -30,7 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
 //        StatusBarUtil.setLightMode(this);
-        StatusBarUtil.setColor(this, getStatusBarColor(), DEFAULT_ALPHA);
+        initStatusBarColor();
         GlobalConfig.setCurrentActivity(this);
     }
 
@@ -82,8 +82,16 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         return R.layout.ui_framework_activity_base;
     }
 
+    protected void initStatusBarColor() {
+        StatusBarUtil.setColor(this, getStatusBarColor(), getStatusAlpha());
+    }
+
     protected int getStatusBarColor() {
         return ContextCompat.getColor(this, R.color.white);
+    }
+
+    protected int getStatusAlpha() {
+        return DEFAULT_ALPHA;
     }
 
     /**
