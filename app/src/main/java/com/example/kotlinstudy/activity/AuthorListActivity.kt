@@ -3,6 +3,7 @@ package com.example.kotlinstudy.activity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.adapter.AuthorListAdapter
@@ -33,13 +34,16 @@ class AuthorListActivity : BaseActivity() {
         KotlinStudyApi.api?.requestChapters()?.enqueue(object :
             Callback<BaseResult<List<PublicInfo>>> {
             override fun onFailure(call: Call<BaseResult<List<PublicInfo>>>, t: Throwable) {
-                Log.i("zs", "请求失败")
+                ToastUtils.show("请求失败${t}")
+                Log.i("zs", t.toString())
             }
 
             override fun onResponse(call: Call<BaseResult<List<PublicInfo>>>, response: Response<BaseResult<List<PublicInfo>>>) {
                 if (response.isSuccessful) {
                     rv_author_list.layoutManager = LinearLayoutManager(this@AuthorListActivity, LinearLayoutManager.VERTICAL, false)
                     rv_author_list.adapter = AuthorListAdapter(this@AuthorListActivity, response.body()?.data as ArrayList<PublicInfo>?)
+                }else{
+                    ToastUtils.show("服务器维护中,请求失败")
                 }
             }
         })

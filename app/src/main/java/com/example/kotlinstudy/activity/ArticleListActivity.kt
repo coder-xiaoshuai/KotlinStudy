@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.adapter.ArticleListAdapter
@@ -76,6 +77,7 @@ class ArticleListActivity : BaseActivity() {
             override fun onFailure(call: Call<BaseResult<ArticleWrapper>>, t: Throwable) {
                 refresh_layout.finishRefresh()
                 refresh_layout.finishLoadMore()
+                ToastUtils.show("请求失败:${t.toString()}")
             }
 
             override fun onResponse(call: Call<BaseResult<ArticleWrapper>>, response: Response<BaseResult<ArticleWrapper>>) {
@@ -95,6 +97,8 @@ class ArticleListActivity : BaseActivity() {
                             refresh_layout.setEnableLoadMore(false)
                         }
                     }
+                }else{
+                    ToastUtils.show("请求失败:${response.errorBody().toString()}")
                 }
             }
         })
