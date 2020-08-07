@@ -11,6 +11,9 @@ import com.example.kotlinstudy.view.ClickSpanTextView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
+    private var mBackPressed: Long = 0
+    private val TIME_INTERVAL = 2000  //再按一次退出
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
@@ -50,7 +53,7 @@ class MainActivity : BaseActivity() {
         })
     }
 
-    private fun initButtons(){
+    private fun initButtons() {
         btn_kotlin_study.setOnClickListener(this)
         btn_api_test.setOnClickListener(this)
     }
@@ -64,10 +67,19 @@ class MainActivity : BaseActivity() {
                 startActivity(intent)
             }
 
-            R.id.btn_api_test ->{
-                val intent = Intent(this,AuthorListActivity::class.java)
+            R.id.btn_api_test -> {
+                val intent = Intent(this, AuthorListActivity::class.java)
                 startActivity(intent)
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            super.onBackPressed()
+        } else {
+            ToastUtils.show("再按一次退出程序")
+            mBackPressed = System.currentTimeMillis()
         }
     }
 }
