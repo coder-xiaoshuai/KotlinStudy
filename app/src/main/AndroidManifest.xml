@@ -45,6 +45,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".activity.DailyQuestionListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".activity.WebPageActivity"
             android:screenOrientation="portrait" />
     </application>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/text_question_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/color_text_black_33"
+            android:textSize="16sp"
+            tools:text="问题标题奥地利科技埃里克就撒拉开房间啦市解放路打瞌睡解放路撒娇拉开房间说了打卡发简历" />
+
+
+        <TextView
+            android:id="@+id/text_question_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_question_title"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/color_text_gray_66"
+            android:textSize="14sp"
+            tools:text="问题描述啦卡上就发了撒家乐福科技爱上了金佛山丢佛奥发简历撒娇佛is阿弗莱克就撒雷锋解耦股拉萨路费" />
+
+
+        <TextView
+            android:id="@+id/text_question_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_question_desc"
+            android:textColor="@color/color_text_gray_99"
+            android:textSize="12sp"
+            tools:text="作者：小样"
+            />
+
+        <TextView
+            android:id="@+id/text_question_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_question_desc"
+            android:textColor="@color/color_text_gray_99"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"
+            tools:text="2020-08-07"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

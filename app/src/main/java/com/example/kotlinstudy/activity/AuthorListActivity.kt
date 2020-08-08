@@ -1,7 +1,9 @@
 package com.example.kotlinstudy.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,12 +25,16 @@ class AuthorListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getAuthorList()
+        initView()
     }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_author_list
     }
 
+    private fun initView(){
+        text_right.setOnClickListener(this)
+    }
 
     /**
      * 获取公众号作者列表
@@ -45,24 +51,13 @@ class AuthorListActivity : BaseActivity() {
             })
     }
 
-//
-//    private fun getAuthorList() {
-//        //网络请求  如果是请求玩安卓的可以直接使用api去使用 baseUrl已经写死  如果想自定义baseUrl可以直接使用KotlinStudyApi.singleCustomRequest
-//        KotlinStudyApi.api?.requestChapters()?.enqueue(object :
-//            Callback<BaseResult<List<PublicInfo>>> {
-//            override fun onFailure(call: Call<BaseResult<List<PublicInfo>>>, t: Throwable) {
-//                ToastUtils.show("请求失败${t}")
-//                Log.i("zs", t.toString())
-//            }
-//
-//            override fun onResponse(call: Call<BaseResult<List<PublicInfo>>>, response: Response<BaseResult<List<PublicInfo>>>) {
-//                if (response.isSuccessful) {
-//
-//                } else {
-//                    ToastUtils.show("服务器维护中,请求失败")
-//                }
-//            }
-//        })
-//    }
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.text_right -> {
+                val intent = Intent(this, DailyQuestionListActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
 
 }

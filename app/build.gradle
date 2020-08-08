@@ -44,6 +44,9 @@ dependencies {
 
     def dependencies = rootProject.ext.dependencies
     implementation dependencies.recyclerview
+    implementation dependencies.cardview
+
+
     implementation dependencies.glide
     annotationProcessor dependencies.glide_annotationProcessor
     implementation dependencies.retrofit

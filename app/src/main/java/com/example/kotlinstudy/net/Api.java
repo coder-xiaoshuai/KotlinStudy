@@ -4,6 +4,7 @@ import com.example.kotlinstudy.bean.Article;
 import com.example.kotlinstudy.bean.ArticleWrapper;
 import com.example.kotlinstudy.bean.BaseResult;
 import com.example.kotlinstudy.bean.PublicInfo;
+import com.example.kotlinstudy.bean.QuestionWrapper;
 
 import java.util.List;
 
@@ -28,4 +29,12 @@ public interface Api {
      */
     @GET("/wxarticle/list/{id}/{page}/json")
     Call<BaseResult<ArticleWrapper>> getArticleList(@Path("id") int id, @Path("page") int page);
+
+    /**
+     * 每日一答
+     *
+     * @return
+     */
+    @GET("/wenda/list/{page}/json ")
+    Call<BaseResult<QuestionWrapper>> getDailyQuestionList(@Path("page") int page);
 }

@@ -9,30 +9,28 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:gravity="center"
-        android:text="推荐公众号"
+        android:background="@color/white"
+        android:text="每日一答"
         android:textColor="@color/color_text_black_33"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_right"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:text="每日一问"
-        android:gravity="center_vertical"
-        android:textColor="@color/color_text_black_33"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_author_list"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+        app:layout_constraintTop_toBottomOf="@+id/text_title">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_question_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_f2"
+            />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
