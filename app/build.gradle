@@ -54,4 +54,16 @@ dependencies {
     implementation dependencies.refresh_header_classics
     implementation dependencies.refresh_header_material
     implementation dependencies.refresh_footer_classics
+
+    //room
+    implementation dependencies.room
+    annotationProcessor dependencies.room_annotationProcessor
+    implementation dependencies.room_ktx
+    testImplementation dependencies.room_test
+
+    implementation dependencies.lifecycle_viewmodel
+    implementation dependencies.lifecycle_livedata
+    implementation dependencies.lifecycle_viewmodel_savedstate
+    implementation dependencies.lifecycle_common_java8
+
 }
