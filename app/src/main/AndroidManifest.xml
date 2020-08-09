@@ -17,8 +17,7 @@
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/splash_fullscreen"
-            >
+            android:theme="@style/splash_fullscreen">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,6 +49,10 @@
 
         <activity
             android:name=".activity.WebPageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.KotlinMapActivity"
             android:screenOrientation="portrait" />
     </application>
 
