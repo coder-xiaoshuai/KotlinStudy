@@ -6,11 +6,14 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:background="@color/white"
+        android:ellipsize="end"
         android:gravity="center"
-        android:text="文章详情"
+        android:maxEms="12"
+        android:maxLines="1"
+        android:text="文章详情拉丝机房拉伸件打蜡家乐福地啊我奥拉夫凯撒奖了法拉盛看风景拉数据库了"
         android:textColor="@color/color_text_black_33"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -18,7 +18,7 @@ class WebPageActivity : BaseActivity() {
         const val INTENT_KEY_TITLE = "web_page_title"
     }
 
-    private var title: String = ""
+    private var title: String ?= ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

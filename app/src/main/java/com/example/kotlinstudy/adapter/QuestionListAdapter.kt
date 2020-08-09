@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.activity.WebPageActivity
 import com.example.kotlinstudy.bean.Question
+import com.example.kotlinstudy.utils.TextHtmlUtils
 import kotlinx.android.synthetic.main.item_rv_daily_question.view.*
 
 class QuestionListAdapter(var context: Context, var list: ArrayList<Question>? = null) :
@@ -28,6 +29,7 @@ class QuestionListAdapter(var context: Context, var list: ArrayList<Question>? =
             text_question_title.text = list?.get(position)?.title ?: ""
             val desc = Html.fromHtml(list?.get(position)?.desc ?: "")
             text_question_desc.text = desc
+            TextHtmlUtils.handHtmlLink(context,text_question_desc)
             text_question_author.text = "作者: ${list?.get(position)?.author ?: "未知"}"
             text_question_time.text = list?.get(position)?.niceShareDate ?: ""
         }

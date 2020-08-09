@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
-import com.example.kotlinstudy.adapter.ArticleListAdapter
 import com.example.kotlinstudy.adapter.QuestionListAdapter
 import com.example.kotlinstudy.bean.Question
 import com.example.kotlinstudy.bean.QuestionWrapper
@@ -67,7 +66,8 @@ class DailyQuestionListActivity : BaseActivity() {
                 refresh_layout.finishRefresh()
                 refresh_layout.finishLoadMore()
                 it?.let {
-                    if (it.currentPage == 1) {
+                    currentPage = it.curPage
+                    if (it.curPage == 1) {
                         //刷新
                         questionList.clear()
                         refresh_layout.setEnableLoadMore(true)
