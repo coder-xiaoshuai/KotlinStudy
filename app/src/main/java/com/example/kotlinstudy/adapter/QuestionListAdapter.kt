@@ -35,11 +35,19 @@ class QuestionListAdapter(var context: Context, var list: ArrayList<Question>? =
         }
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, WebPageActivity::class.java)
-            intent.putExtra(WebPageActivity.INTENT_KEY_URL, list?.get(position)?.link)
-            intent.putExtra(WebPageActivity.INTENT_KEY_TITLE, "")
-            context.startActivity(intent)
+            gotoDetailPage(position)
         }
+
+        holder.itemView.text_question_desc.setOnClickListener{
+            gotoDetailPage(position)
+        }
+    }
+
+    private fun gotoDetailPage(position: Int) {
+        val intent = Intent(context, WebPageActivity::class.java)
+        intent.putExtra(WebPageActivity.INTENT_KEY_URL, list?.get(position)?.link)
+        intent.putExtra(WebPageActivity.INTENT_KEY_TITLE, "")
+        context.startActivity(intent)
     }
 
     class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
