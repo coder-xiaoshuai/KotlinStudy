@@ -41,6 +41,7 @@ class KotlinStudyApplication : Application() {
         registerLifeCallback()
     }
 
+    private var activityCount : Int = 0
     private fun registerLifeCallback(){
         registerActivityLifecycleCallbacks(object:ActivityLifecycleCallbacks{
             override fun onActivityPaused(activity: Activity) {
@@ -48,14 +49,11 @@ class KotlinStudyApplication : Application() {
             }
 
             override fun onActivityStarted(activity: Activity) {
-                Log.i("zs","onActivityStarted$activity")
-                Log.i("zs","activityStack${activityStack.size}")
-                Log.i("zs","activityStack${activityStack.size}")
-                Log.i("zs","activityStack${activityStack.size}")
-                Log.i("zs","activityStack${activityStack.size}")
-                if (activityStack.first is MainActivity){
-                    Log.i("zs","进入前台")
+                Log.i("zs", "onActivityStarted$activity")
+                if (activityCount <= 0) {
+                    //应用进入前台
                 }
+                activityCount++
             }
 
             override fun onActivityDestroyed(activity: Activity) {
@@ -69,8 +67,9 @@ class KotlinStudyApplication : Application() {
 
             override fun onActivityStopped(activity: Activity) {
                 Log.i("zs","onActivityStopped$activity")
-                if (activityStack.first is MainActivity){
-                    Log.i("zs","进入后台")
+                activityCount--
+                if (activityCount <= 0) {
+                    //应用进入后台
                 }
             }
 

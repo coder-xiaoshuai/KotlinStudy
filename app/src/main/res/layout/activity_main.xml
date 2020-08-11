@@ -41,6 +41,11 @@
                 style="@style/main_button_common_style"
                 android:text="玩安卓推荐公众号" />
 
+<!--            <Button-->
+<!--                android:id="@+id/btn_test_trans"-->
+<!--                style="@style/main_button_common_style"-->
+<!--                android:text="透明主题测试" />-->
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

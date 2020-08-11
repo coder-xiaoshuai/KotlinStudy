@@ -56,6 +56,7 @@ class MainActivity : BaseActivity() {
     private fun initButtons() {
         btn_kotlin_study.setOnClickListener(this)
         btn_api_test.setOnClickListener(this)
+        btn_test_trans.setOnClickListener(this)
     }
 
 
@@ -69,6 +70,11 @@ class MainActivity : BaseActivity() {
 
             R.id.btn_api_test -> {
                 val intent = Intent(this, AuthorListActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btn_test_trans -> {
+                val intent = Intent(this, TranslucentActivity::class.java)
                 startActivity(intent)
             }
         }

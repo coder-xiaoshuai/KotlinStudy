@@ -23,4 +23,8 @@
         <item name="android:windowFullscreen">true</item>//全屏即无通知栏
         <item name="android:windowContentOverlay">@null</item>//是否有遮盖
     </style>
+
+    <style name="translucent" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>
