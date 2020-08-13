@@ -5,6 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <com.example.common_ui.views.TopBar
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        app:leftIconMode="back"
+        app:title="自定义view展示页面"
+        />
+
     <com.example.kotlinstudy.view.WinRateView
         android:layout_width="200dp"
         android:layout_height="200dp"
