@@ -4,4 +4,14 @@
         <attr name="clickText" format="string" />
         <attr name="clickTextColor" format="color|reference" />
     </declare-styleable>
+
+    <declare-styleable name="WinRateView">
+        <attr name="color_win" format="color"/>
+        <attr name="color_lose" format="color"/>
+        <attr name="color_tie" format="color"/>
+        <attr name="win_percent" format="float"/>
+        <attr name="lose_percent" format="float"/>
+        <attr name="tie_percent" format="float"/>
+        <attr name="is_startAnimator" format="boolean"/>
+    </declare-styleable>
 </resources>

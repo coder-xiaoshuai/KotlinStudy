@@ -55,7 +55,7 @@
             android:name=".activity.KotlinMapActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.TranslucentActivity"
+        <activity android:name=".activity.ShowCustomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/translucent"
             />

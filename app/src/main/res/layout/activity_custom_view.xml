@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.example.kotlinstudy.view.WinRateView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        app:color_win="#15D31D"
+        app:color_tie="#B7C3B7"
+        app:color_lose="#E42314"
+        app:win_percent="50"
+        app:lose_percent="25"
+        app:tie_percent="25"
+        app:is_startAnimator="true"
+        />
+
+</LinearLayout>
