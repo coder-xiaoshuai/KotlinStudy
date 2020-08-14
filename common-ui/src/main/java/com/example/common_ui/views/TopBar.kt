@@ -54,7 +54,7 @@ class TopBar : RelativeLayout {
             rightTextView?.text = value
         }
 
-    var rightIcon1ResId: Int = 0
+    var rightIcon1Src: Int = 0
         set(value) {
             field = value
             if (value != 0) {
@@ -63,7 +63,7 @@ class TopBar : RelativeLayout {
             }
         }
 
-    var rightIcon2ResId: Int = 0
+    var rightIcon2Src: Int = 0
         set(value) {
             field = value
             if (value != 0) {
@@ -72,7 +72,7 @@ class TopBar : RelativeLayout {
             }
         }
 
-    var rightIcon3ResId: Int = 0
+    var rightIcon3Src: Int = 0
         set(value) {
             field = value
             if (value != 0) {
@@ -96,9 +96,9 @@ class TopBar : RelativeLayout {
         title = array.getString(R.styleable.TopBar_title)
         leftText = array.getString(R.styleable.TopBar_leftText)
         rightText = array.getString(R.styleable.TopBar_rightText)
-        rightIcon1ResId = array.getResourceId(R.styleable.TopBar_rightIcon1,0)
-        rightIcon2ResId = array.getResourceId(R.styleable.TopBar_rightIcon2,0)
-        rightIcon3ResId = array.getResourceId(R.styleable.TopBar_rightIcon3,0)
+        rightIcon1Src = array.getResourceId(R.styleable.TopBar_rightIcon1Src,0)
+        rightIcon2Src = array.getResourceId(R.styleable.TopBar_rightIcon2Src,0)
+        rightIcon3Src = array.getResourceId(R.styleable.TopBar_rightIcon3Src,0)
         array.recycle()
 
         initViews()
@@ -121,26 +121,31 @@ class TopBar : RelativeLayout {
         rightTextView = findViewById(R.id.text_right)
         rightTextView?.text = rightText
         rightIcon1 = findViewById(R.id.right_icon1)
-        if (rightIcon1ResId != 0) {
-            rightIcon1?.setImageResource(rightIcon1ResId)
+        if (rightIcon1Src != 0) {
+            rightIcon1?.visibility = View.VISIBLE
+            rightIcon1?.setImageResource(rightIcon1Src)
         }
         rightIcon2 = findViewById(R.id.right_icon2)
-        if (rightIcon2ResId != 0) {
-            rightIcon2?.setImageResource(rightIcon2ResId)
+        if (rightIcon2Src != 0) {
+            rightIcon2?.visibility = View.VISIBLE
+            rightIcon2?.setImageResource(rightIcon2Src)
         }
         rightIcon3 = findViewById(R.id.right_icon3)
-        if (rightIcon3ResId != 0) {
-            rightIcon3?.setImageResource(rightIcon3ResId)
+        if (rightIcon3Src != 0) {
+            rightIcon3?.visibility = View.VISIBLE
+            rightIcon3?.setImageResource(rightIcon3Src)
         }
     }
 
     private fun initEvent() {
         leftIcon?.setOnClickListener {
-            if (leftIconMode == LeftIconMode.BACK.mode && topBarClickListener == null) {
+            if (leftIconMode == LeftIconMode.BACK.mode) {
                 if (context is Activity) {
                     (context as Activity).finish()
                 }
+                return@setOnClickListener
             }
+            topBarClickListener?.onLeftIconClick()
         }
 
         leftTextView?.setOnClickListener {
@@ -181,7 +186,7 @@ class TopBar : RelativeLayout {
     /**
      * 仿照动画的监听方式 上方调用可以按需实现相应方法 不用全部实现
      */
-    class TopBarClickAdapter : TopBarClickListener {
+    open class TopBarClickListenerAdapter : TopBarClickListener {
         override fun onLeftIconClick() {
         }
 

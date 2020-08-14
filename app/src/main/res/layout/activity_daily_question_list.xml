@@ -4,25 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_title"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:gravity="center"
-        android:background="@color/white"
-        android:text="每日一答"
-        android:textColor="@color/color_text_black_33"
-        android:textSize="20sp"
+    <com.example.common_ui.views.TopBar
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIconMode="back"
+        app:title="每日一问"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title">
+        app:layout_constraintTop_toBottomOf="@+id/topBar">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_question_list"

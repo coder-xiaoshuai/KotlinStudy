@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
+import com.example.common_ui.views.TopBar
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.adapter.AuthorListAdapter
 import com.example.kotlinstudy.bean.BaseResult
@@ -33,7 +34,12 @@ class AuthorListActivity : BaseActivity() {
     }
 
     private fun initView(){
-        text_right.setOnClickListener(this)
+        topBar.topBarClickListener = object : TopBar.TopBarClickListenerAdapter(){
+            override fun onRightTextClick() {
+                val intent = Intent(this@AuthorListActivity, DailyQuestionListActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     /**
@@ -50,14 +56,4 @@ class AuthorListActivity : BaseActivity() {
                 }
             })
     }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.text_right -> {
-                val intent = Intent(this, DailyQuestionListActivity::class.java)
-                startActivity(intent)
-            }
-        }
-    }
-
 }

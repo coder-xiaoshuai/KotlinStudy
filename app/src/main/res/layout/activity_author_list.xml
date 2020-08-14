@@ -4,35 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_title"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:gravity="center"
-        android:text="推荐公众号"
-        android:textColor="@color/color_text_black_33"
-        android:textSize="20sp"
+    <com.example.common_ui.views.TopBar
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIconMode="back"
+        app:title="推荐公众号"
+        app:rightText="每日一问"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_right"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:text="每日一问"
-        android:gravity="center_vertical"
-        android:textColor="@color/color_text_black_33"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_author_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+        app:layout_constraintTop_toBottomOf="@+id/topBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 import kotlinx.android.synthetic.main.activity_daily_question_list.*
 
 /**
- * 每日一答列表页面
+ * 每日一问列表页面
  */
 class DailyQuestionListActivity : BaseActivity() {
 
