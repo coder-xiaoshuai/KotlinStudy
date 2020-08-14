@@ -59,6 +59,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/translucent"
             />
+
+        <activity android:name=".activity.SimulateOtherActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.KaolaActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

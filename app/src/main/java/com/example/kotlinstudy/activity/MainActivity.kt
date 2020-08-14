@@ -57,6 +57,7 @@ class MainActivity : BaseActivity() {
         btn_kotlin_study.setOnClickListener(this)
         btn_api_test.setOnClickListener(this)
         btn_custom_view.setOnClickListener(this)
+        btn_simulate_other.setOnClickListener(this)
 //        btn_test_trans.setOnClickListener(this)
     }
 
@@ -76,6 +77,11 @@ class MainActivity : BaseActivity() {
 
             R.id.btn_custom_view -> {
                 val intent = Intent(this,ShowCustomActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btn_simulate_other -> {
+                val intent = Intent(this, SimulateOtherActivity::class.java)
                 startActivity(intent)
             }
 
