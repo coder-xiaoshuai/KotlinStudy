@@ -5,25 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="500dp">
-        <ImageView
-            android:id="@+id/image_photo"
-            android:layout_width="match_parent"
-            android:layout_height="500dp" />
+    <include layout="@layout/layout_header_kaola"
 
-        <!--vip卡片区-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="16dp"
-            android:background="@color/dark"
-            ></RelativeLayout>
-
-    </RelativeLayout>
+        />
 
 
     <com.google.android.material.appbar.AppBarLayout

@@ -52,6 +52,11 @@
                 style="@style/main_button_common_style"
                 android:text="仿其他应用效果" />
 
+            <Button
+                android:id="@+id/btn_notification_test"
+                style="@style/main_button_common_style"
+                android:text="通知测试" />
+
 <!--            <Button-->
 <!--                android:id="@+id/btn_test_trans"-->
 <!--                style="@style/main_button_common_style"-->

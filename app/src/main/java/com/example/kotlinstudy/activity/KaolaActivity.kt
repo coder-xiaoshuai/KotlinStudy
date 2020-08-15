@@ -2,13 +2,12 @@ package com.example.kotlinstudy.activity
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import com.example.common.utils.ViewUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.utils.GlideUtils
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_kaola.*
+import kotlinx.android.synthetic.main.layout_header_kaola.*
 
 class KaolaActivity:BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
