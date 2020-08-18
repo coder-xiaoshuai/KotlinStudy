@@ -34,6 +34,11 @@
                 style="@style/main_button_common_style"
                 android:text="仿考拉个人" />
 
+            <Button
+                android:id="@+id/btn_simulate_fanji"
+                style="@style/main_button_common_style"
+                android:text="仿FUNJI图表" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

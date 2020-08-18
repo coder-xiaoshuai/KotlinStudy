@@ -11,6 +11,7 @@ class SimulateOtherActivity:BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         btn_simulate_kaola.setOnClickListener(this)
+        btn_simulate_fanji.setOnClickListener(this)
     }
 
     override fun getLayoutId(): Int {
@@ -21,6 +22,11 @@ class SimulateOtherActivity:BaseActivity() {
         when (v?.id) {
             R.id.btn_simulate_kaola -> {
                 val intent = Intent(this, KaolaActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btn_simulate_fanji ->{
+                val intent = Intent(this, LineChartActivity::class.java)
                 startActivity(intent)
             }
         }
