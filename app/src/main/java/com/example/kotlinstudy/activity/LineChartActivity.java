@@ -3,15 +3,12 @@ package com.example.kotlinstudy.activity;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -57,12 +54,6 @@ public class LineChartActivity extends DemoBase implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_linechart);
-
-        setTitle("LineChartActivity3");
-
         rlShowData = findViewById(R.id.rl_show_data);
         tvShowData = findViewById(R.id.text_show_data);
         tvAllFans = findViewById(R.id.text_all_fans);
@@ -164,6 +155,8 @@ public class LineChartActivity extends DemoBase implements
         chart.setOnChartGestureListener(new OnChartGestureListener() {
             @Override
             public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                //显示指示线
+                chart.getData().setHighlightEnabled(true);
                 if (hasShowData) {
                     rlShowData.setVisibility(View.VISIBLE);
                 }
@@ -171,6 +164,8 @@ public class LineChartActivity extends DemoBase implements
 
             @Override
             public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                //隐藏指示线
+                chart.getData().setHighlightEnabled(false);
                 rlShowData.setVisibility(View.INVISIBLE);
             }
 
@@ -250,7 +245,7 @@ public class LineChartActivity extends DemoBase implements
             set1 = new LineDataSet(values1, star1.getName());
 
             set1.setAxisDependency(AxisDependency.LEFT);
-            set1.setColor(ColorTemplate.getHoloBlue());
+            set1.setColor(ContextCompat.getColor(this,R.color.color_chart_blue));
             set1.setDrawCircles(false);//拐点是否是圆形
             set1.setDrawValues(false);//是否绘制数值
 //            set1.setCircleColor(Color.WHITE);
@@ -261,7 +256,7 @@ public class LineChartActivity extends DemoBase implements
             set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             set1.setHighlightLineWidth(2f);
             set1.setDrawHorizontalHighlightIndicator(false);//不显示水平高亮线
-            set1.setHighLightColor(Color.rgb(244, 117, 117));
+            set1.setHighLightColor(ContextCompat.getColor(this,R.color.color_chart_high));
             set1.setDrawCircleHole(false);
             //set1.setFillFormatter(new MyFillFormatter(0f));
             //set1.setDrawHorizontalHighlightIndicator(false);
@@ -271,7 +266,7 @@ public class LineChartActivity extends DemoBase implements
             // create a dataset and give it a type
             set2 = new LineDataSet(values2, star2.getName());
             set2.setAxisDependency(AxisDependency.LEFT);
-            set2.setColor(Color.RED);
+            set2.setColor(ContextCompat.getColor(this,R.color.color_chart_red));
             set2.setDrawCircles(false);//拐点是否是圆形
             set2.setDrawValues(false);//是否绘制数值
 //            set2.setCircleColor(Color.WHITE);
@@ -283,12 +278,12 @@ public class LineChartActivity extends DemoBase implements
             set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             set2.setHighlightLineWidth(2f);
             set2.setDrawHorizontalHighlightIndicator(false);//不显示水平高亮线
-            set2.setHighLightColor(Color.rgb(244, 117, 117));
+            set2.setHighLightColor(ContextCompat.getColor(this,R.color.color_chart_high));
             //set2.setFillFormatter(new MyFillFormatter(900f));
 
             set3 = new LineDataSet(values3, star3.getName());
             set3.setAxisDependency(AxisDependency.LEFT);
-            set3.setColor(Color.YELLOW);
+            set3.setColor(ContextCompat.getColor(this,R.color.color_chart_green));
             set3.setDrawCircles(false);//拐点是否是圆形
             set3.setDrawValues(false);//是否绘制数值
 //            set3.setCircleColor(Color.WHITE);
@@ -300,7 +295,7 @@ public class LineChartActivity extends DemoBase implements
             set3.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             set3.setHighlightLineWidth(2f);
             set3.setDrawHorizontalHighlightIndicator(false);//不显示水平高亮线
-            set3.setHighLightColor(Color.rgb(244, 117, 117));
+            set3.setHighLightColor(ContextCompat.getColor(this,R.color.color_chart_high));
 
             // create a data object with the data sets
             LineData data = new LineData(set1, set2, set3);

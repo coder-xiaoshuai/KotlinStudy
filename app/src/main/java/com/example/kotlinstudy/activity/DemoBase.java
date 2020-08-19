@@ -10,9 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.common_ui.base.BaseActivity;
+import com.example.kotlinstudy.R;
 import com.github.mikephil.charting.charts.Chart;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -21,7 +22,7 @@ import com.google.android.material.snackbar.Snackbar;
  *
  * @author Philipp Jahoda
  */
-public abstract class DemoBase extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+public abstract class DemoBase extends BaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     protected final String[] months = new String[] {
             "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
@@ -33,6 +34,11 @@ public abstract class DemoBase extends AppCompatActivity implements ActivityComp
             "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
             "Party Y", "Party Z"
     };
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_linechart;
+    }
 
     private static final int PERMISSION_STORAGE = 0;
 
