@@ -29,6 +29,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.ChartTouchListener;
+import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
@@ -48,6 +49,7 @@ public class LineChartActivity extends DemoBase implements OnSeekBarChangeListen
     private TextView tvX, tvY;
     private RelativeLayout rlShowData;
     private TextView tvShowData;
+    private boolean hasShowData = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +167,49 @@ public class LineChartActivity extends DemoBase implements OnSeekBarChangeListen
 
 
         //设置数据监听
+        chart.setOnChartGestureListener(new OnChartGestureListener() {
+            @Override
+            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                if (hasShowData){
+                    rlShowData.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                rlShowData.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onChartLongPressed(MotionEvent me) {
+
+            }
+
+            @Override
+            public void onChartDoubleTapped(MotionEvent me) {
+
+            }
+
+            @Override
+            public void onChartSingleTapped(MotionEvent me) {
+
+            }
+
+            @Override
+            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
+
+            }
+
+            @Override
+            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+
+            }
+
+            @Override
+            public void onChartTranslate(MotionEvent me, float dX, float dY) {
+
+            }
+        });
 //        chart.setOnTouchListener(new ChartTouchListener(chart) {
 //            @Override
 //            public boolean onTouch(View v, MotionEvent event) {
@@ -177,26 +222,26 @@ public class LineChartActivity extends DemoBase implements OnSeekBarChangeListen
 
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, int range) {
 
         ArrayList<Entry> values1 = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * (range / 2f));
+            int val = (int) (Math.random() * (range / 2));
             values1.add(new Entry(i, val));
         }
 
         ArrayList<Entry> values2 = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range);
+            int val = (int) (Math.random() * range);
             values2.add(new Entry(i, val));
         }
 
         ArrayList<Entry> values3 = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range);
+            int val = (int) (Math.random() * range);
             values3.add(new Entry(i, val));
         }
 
@@ -300,7 +345,8 @@ public class LineChartActivity extends DemoBase implements OnSeekBarChangeListen
         chart.centerViewToAnimated(e.getX(), e.getY(), chart.getData().getDataSetByIndex(h.getDataSetIndex())
                 .getAxisDependency(), 500);
         rlShowData.setVisibility(View.VISIBLE);
-        tvShowData.setText("明星1：" + e.getY() + "万粉\n明星2:" + e.getY() + "万粉\n明星3：" + e.getY() + "万粉");
+        tvShowData.setText("明星1：" + e.getY() + "万粉\n明星2：" + e.getY() + "万粉\n明星3：" + e.getY() + "万粉");
+        hasShowData = true;
 
     }
 
