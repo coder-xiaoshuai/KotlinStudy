@@ -3,12 +3,12 @@ package com.example.kotlinstudy.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.common.utils.ToastUtils
-import com.example.kotlinstudy.bean.BaseResult
-import com.example.kotlinstudy.bean.PublicInfo
-import com.example.kotlinstudy.bean.Question
-import com.example.kotlinstudy.bean.QuestionWrapper
+import com.example.kotlinstudy.bean.*
 import com.example.kotlinstudy.net.KotlinStudyApi
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +20,10 @@ class WanAndroidViewModel : ViewModel() {
 
     val questionLiveData: MutableLiveData<QuestionWrapper> by lazy {
         MutableLiveData<QuestionWrapper>()
+    }
+
+    val bannerLiveData: MutableLiveData<List<Banner>> by lazy {
+        MutableLiveData<List<Banner>>()
     }
 
     fun getAuthorList() {
@@ -36,6 +40,28 @@ class WanAndroidViewModel : ViewModel() {
                     response.body()?.let {
                         if (!it.data.isNullOrEmpty()) {
                             authorLiveData.value = it.data
+                        }
+                    }
+                } else {
+                    ToastUtils.show("服务器维护中,请求失败")
+                }
+            }
+        })
+    }
+
+    fun getBanners() {
+        KotlinStudyApi.api?.banners?.enqueue(object :
+            Callback<BaseResult<List<Banner>>> {
+            override fun onFailure(call: Call<BaseResult<List<Banner>>>, t: Throwable) {
+                ToastUtils.show("请求失败${t}")
+            }
+
+            override fun onResponse(call: Call<BaseResult<List<Banner>>>, response: Response<BaseResult<List<Banner>>>) {
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    response.body()?.let {
+                        if (!it.data.isNullOrEmpty()) {
+                            bannerLiveData.value = it.data
                         }
                     }
                 } else {

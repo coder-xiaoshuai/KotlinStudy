@@ -2,31 +2,28 @@ package com.example.kotlinstudy.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.common_ui.views.TopBar
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.adapter.AuthorListAdapter
-import com.example.kotlinstudy.bean.BaseResult
+import com.example.kotlinstudy.bean.Banner
 import com.example.kotlinstudy.bean.PublicInfo
-import com.example.kotlinstudy.net.KotlinStudyApi
 import com.example.kotlinstudy.viewmodel.WanAndroidViewModel
 import kotlinx.android.synthetic.main.activity_author_list.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AuthorListActivity : BaseActivity() {
 
+    private lateinit var mAdapter:AuthorListAdapter
+    private var authorList:ArrayList<PublicInfo>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getAuthorList()
         initView()
+        getAuthorList()
+        getBanners()
     }
 
     override fun getLayoutId(): Int {
@@ -40,6 +37,11 @@ class AuthorListActivity : BaseActivity() {
                 startActivity(intent)
             }
         }
+
+        rv_author_list.layoutManager = LinearLayoutManager(this@AuthorListActivity, LinearLayoutManager.VERTICAL, false)
+        authorList = ArrayList()
+        mAdapter = AuthorListAdapter(this@AuthorListActivity, authorList as ArrayList<PublicInfo>)
+        rv_author_list.adapter = mAdapter
     }
 
     /**
@@ -51,8 +53,23 @@ class AuthorListActivity : BaseActivity() {
         viewModel.authorLiveData.observe(this,
             Observer<List<PublicInfo>> {
                 it?.let {
-                    rv_author_list.layoutManager = LinearLayoutManager(this@AuthorListActivity, LinearLayoutManager.VERTICAL, false)
-                    rv_author_list.adapter = AuthorListAdapter(this@AuthorListActivity, it as ArrayList<PublicInfo>)
+                    authorList?.addAll(it)
+                    mAdapter.notifyDataSetChanged()
+                }
+            })
+    }
+
+    /**
+     * 获取banner数据
+     */
+    private fun getBanners(){
+        val viewModel = ViewModelProvider(this).get(WanAndroidViewModel::class.java)
+        viewModel.getBanners()
+        viewModel.bannerLiveData.observe(this,
+            Observer<List<Banner>> {
+                it?.let {
+                    mAdapter.banners = it
+                    mAdapter.notifyItemChanged(0)
                 }
             })
     }

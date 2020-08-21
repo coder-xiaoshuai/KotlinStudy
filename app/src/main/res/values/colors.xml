@@ -29,4 +29,16 @@
     <color name="color_card10">#f5f7fa</color>
     <color name="color_card11">#ccd1d9</color>
     <color name="color_card12">#656d78</color>
+
+    <!--黑色不透明度-->
+    <color name="color_black_90">#e6000000</color>
+    <color name="color_black_80">#cc000000</color>
+    <color name="color_black_70">#b3000000</color>
+    <color name="color_black_60">#99000000</color>
+    <color name="color_black_50">#80000000</color>
+    <color name="color_black_40">#66000000</color>
+    <color name="color_black_30">#4d000000</color>
+    <color name="color_black_20">#33000000</color>
+    <color name="color_black_10">#1a000000</color>
+
 </resources>

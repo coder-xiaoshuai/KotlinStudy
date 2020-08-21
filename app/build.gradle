@@ -48,6 +48,7 @@ dependencies {
     implementation dependencies.recyclerview
     implementation dependencies.cardview
     implementation dependencies.mpchart
+    implementation dependencies.banner
 
 
     implementation dependencies.glide
