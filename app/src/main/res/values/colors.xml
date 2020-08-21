@@ -15,4 +15,18 @@
     <color name="color_chart_blue">#3CACDF</color>
     <color name="color_chart_red">#EC4639</color>
     <color name="color_chart_high">#F1EDED</color>
+
+
+    <color name="color_card1">#ed5565</color>
+    <color name="color_card2">#fc6e51</color>
+    <color name="color_card3">#ffce54</color>
+    <color name="color_card4">#a0d468</color>
+    <color name="color_card5">#48cfad</color>
+    <color name="color_card6">#4fc1e9</color>
+    <color name="color_card7">#5d9cec</color>
+    <color name="color_card8">#ac92ec</color>
+    <color name="color_card9">#ec87c0</color>
+    <color name="color_card10">#f5f7fa</color>
+    <color name="color_card11">#ccd1d9</color>
+    <color name="color_card12">#656d78</color>
 </resources>

@@ -20,57 +20,20 @@
         app:leftIconMode="hide"
         />
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_study_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/topBar"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_kotlin_study"
-                style="@style/main_button_common_style"
-                android:text="kotlin语法学习" />
-
-            <Button
-                android:id="@+id/btn_api_test"
-                style="@style/main_button_common_style"
-                android:text="玩安卓推荐公众号" />
-
-            <Button
-                android:id="@+id/btn_custom_view"
-                style="@style/main_button_common_style"
-                android:text="自定义view显示" />
-
-            <Button
-                android:id="@+id/btn_simulate_other"
-                style="@style/main_button_common_style"
-                android:text="仿其他应用效果" />
-
-            <Button
-                android:id="@+id/btn_notification_test"
-                style="@style/main_button_common_style"
-                android:text="通知测试" />
-
-<!--            <Button-->
-<!--                android:id="@+id/btn_test_trans"-->
-<!--                style="@style/main_button_common_style"-->
-<!--                android:text="透明主题测试" />-->
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        />
 
     <com.example.kotlinstudy.view.DragFloatView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
         <com.example.kotlinstudy.view.ClickSpanTextView
             android:id="@+id/text_hello_world"
@@ -80,10 +43,10 @@
             android:gravity="center"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="学习kotlin的第一天 hello world!"
+            android:text="学习kotlin的第一天"
             android:textSize="20sp"
-            app:clickText="hello world!"
-            app:clickTextColor="@color/colorAccent" />
+            app:clickText="一"
+            app:clickTextColor="@color/color_card1" />
 
     </com.example.kotlinstudy.view.DragFloatView>
 

@@ -1,25 +1,25 @@
 package com.example.kotlinstudy.recyclerview
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinstudy.R
-import com.example.kotlinstudy.activity.ArticleListActivity
-import com.example.kotlinstudy.bean.PublicInfo
-import com.example.kotlinstudy.utils.Constant
-import kotlinx.android.synthetic.main.item_rv_recommend_author.view.*
 
 abstract class BaseRecyclerAdapter<T>(var context: Context, var list: ArrayList<T>? = null) :
-    RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder>() {
+    RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return BaseViewHolder(LayoutInflater.from(context).inflate(getItemId(), parent, false))
+    private var itemClickListener: OnItemClickListener<T>? = null
+
+    public fun setOnItemClickListener(itemClickListener: OnItemClickListener<T>? = null) {
+        this.itemClickListener = itemClickListener
     }
 
-    abstract fun getItemId(): Int
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        return BaseViewHolder(LayoutInflater.from(context).inflate(getItemLayoutId(), parent, false))
+    }
+
+    abstract fun getItemLayoutId(): Int
 
     override fun getItemCount(): Int {
         return list?.size ?: 0
@@ -27,12 +27,15 @@ abstract class BaseRecyclerAdapter<T>(var context: Context, var list: ArrayList<
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         onBindItemData(holder, list?.get(position))
+        holder.itemView.setOnClickListener {
+            itemClickListener?.onItemClick(position, list?.get(position))
+        }
     }
 
     /**
      * 如果只是简单绑定数据 无需position可以重写该方法
      */
-    protected fun onBindItemData(holder: BaseViewHolder, data: T?) {
+    protected open fun onBindItemData(holder: BaseViewHolder, data: T?) {
 
     }
 
@@ -63,5 +66,9 @@ abstract class BaseRecyclerAdapter<T>(var context: Context, var list: ArrayList<
             this.list?.remove(data)
             notifyItemRemoved(removeIndex)
         }
+    }
+
+    interface OnItemClickListener<T> {
+        fun onItemClick(position: Int, itemData: T?)
     }
 }

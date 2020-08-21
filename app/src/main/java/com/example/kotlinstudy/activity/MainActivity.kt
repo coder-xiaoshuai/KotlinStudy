@@ -1,23 +1,30 @@
 package com.example.kotlinstudy.activity
 
 import android.content.Intent
+import android.graphics.ComposePathEffect
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.common.utils.ToastUtils
+import com.example.common.utils.ViewUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
+import com.example.kotlinstudy.adapter.MainStudyListAdapter
+import com.example.kotlinstudy.bean.StudyListBean
+import com.example.kotlinstudy.recyclerview.BaseRecyclerAdapter
 import com.example.kotlinstudy.utils.DateUtils
 import com.example.kotlinstudy.view.ClickSpanTextView
+import com.example.kotlinstudy.view.helper.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<StudyListBean> {
     private var mBackPressed: Long = 0
     private val TIME_INTERVAL = 2000  //再按一次退出
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
-        initButtons()
     }
 
     override fun getLayoutId(): Int {
@@ -27,8 +34,8 @@ class MainActivity : BaseActivity() {
 
     private fun initView() {
         text_hello_world.text =
-            "学习kotlin的第${DateUtils.getDaysAfterSomeDay("2020-07-24", "yyyy-MM-dd")}天 hello world!"
-        text_hello_world.setClickText("hello world!")
+            "学习kotlin的第${DateUtils.getDaysAfterSomeDay("2020-07-24", "yyyy-MM-dd")}天"
+        text_hello_world.setClickText("${DateUtils.getDaysAfterSomeDay("2020-07-24", "yyyy-MM-dd")}")
 
         text_hello_world.setOnClickListener {
             if (text_hello_world.mClickHandled) {
@@ -37,12 +44,7 @@ class MainActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
-            ToastUtils.show(
-                "学习kotlin的第${DateUtils.getDaysAfterSomeDay(
-                    "2020-07-24",
-                    "yyyy-MM-dd"
-                )}天"
-            )
+            ToastUtils.show("学习kotlin的第${DateUtils.getDaysAfterSomeDay("2020-07-24", "yyyy-MM-dd")}天")
         }
 
         text_hello_world.setTextClickListener(object : ClickSpanTextView.TextClickListener {
@@ -51,48 +53,27 @@ class MainActivity : BaseActivity() {
                 ToastUtils.show("hello world!")
             }
         })
-    }
 
-    private fun initButtons() {
-        btn_kotlin_study.setOnClickListener(this)
-        btn_api_test.setOnClickListener(this)
-        btn_custom_view.setOnClickListener(this)
-        btn_simulate_other.setOnClickListener(this)
-        btn_notification_test.setOnClickListener(this)
-//        btn_test_trans.setOnClickListener(this)
+        val categoryList = ArrayList<StudyListBean>()
+        categoryList.add(StudyListBean("Kotlin语法学习", ContextCompat.getColor(this,R.color.color_card1)))
+        categoryList.add(StudyListBean("玩安卓推荐公众号", ContextCompat.getColor(this,R.color.color_card2)))
+        categoryList.add(StudyListBean("自定义view显示", ContextCompat.getColor(this,R.color.color_card3)))
+        categoryList.add(StudyListBean("仿其他应用效果", ContextCompat.getColor(this,R.color.color_card4)))
+        categoryList.add(StudyListBean("通知测试", ContextCompat.getColor(this,R.color.color_card5)))
+        categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card6)))
+        categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card7)))
+        categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card8)))
+        val mainAdapter = MainStudyListAdapter(this,categoryList)
+        mainAdapter.setOnItemClickListener(this)
+        rv_study_list.layoutManager = GridLayoutManager(this, 2)
+        rv_study_list.addItemDecoration(GridSpacingItemDecoration(2, ViewUtils.dpToPx(8f), true))
+        rv_study_list.adapter = mainAdapter
     }
 
 
     //统一处理点击事件
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_kotlin_study -> {
-                val intent = Intent(this, GrammarStudyActivity::class.java)
-                startActivity(intent)
-            }
-
-            R.id.btn_api_test -> {
-                val intent = Intent(this, AuthorListActivity::class.java)
-                startActivity(intent)
-            }
-
-            R.id.btn_custom_view -> {
-                val intent = Intent(this,ShowCustomActivity::class.java)
-                startActivity(intent)
-            }
-
-            R.id.btn_simulate_other -> {
-                val intent = Intent(this, SimulateOtherActivity::class.java)
-                startActivity(intent)
-            }
-
-            R.id.btn_notification_test ->{
-                val intent = Intent(this,NotificationTestActivity::class.java)
-                startActivity(intent)
-            }
-
-
-
 //            R.id.btn_test_trans -> {
 //                val intent = Intent(this, TranslucentActivity::class.java)
 //                startActivity(intent)
@@ -106,6 +87,34 @@ class MainActivity : BaseActivity() {
         } else {
             ToastUtils.show("再按一次退出程序")
             mBackPressed = System.currentTimeMillis()
+        }
+    }
+
+    override fun onItemClick(position: Int, itemData: StudyListBean?) {
+        when (position) {
+            0 -> {
+                val intent = Intent(this, GrammarStudyActivity::class.java)
+                startActivity(intent)
+            }
+            1 -> {
+                val intent = Intent(this, AuthorListActivity::class.java)
+                startActivity(intent)
+            }
+            2 -> {
+                val intent = Intent(this,ShowCustomActivity::class.java)
+                startActivity(intent)
+            }
+            3 -> {
+                val intent = Intent(this, SimulateOtherActivity::class.java)
+                startActivity(intent)
+            }
+            4 -> {
+                val intent = Intent(this,NotificationTestActivity::class.java)
+                startActivity(intent)
+            }
+            else -> {
+                ToastUtils.show("暂未添加分类")
+            }
         }
     }
 }

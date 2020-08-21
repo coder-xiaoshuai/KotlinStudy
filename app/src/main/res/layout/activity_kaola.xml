@@ -5,11 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/layout_header_kaola"
-
-        />
-
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
@@ -24,9 +19,9 @@
 
             <!-- 照片层 -->
             <ImageView
-                android:id="@+id/image_photo111"
+                android:id="@+id/image_photo"
                 android:layout_width="match_parent"
-                android:layout_height="500dp" />
+                android:layout_height="300dp" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
