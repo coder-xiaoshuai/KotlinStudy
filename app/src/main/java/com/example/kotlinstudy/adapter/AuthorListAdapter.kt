@@ -12,10 +12,12 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.common.utils.ViewUtils
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.activity.ArticleListActivity
+import com.example.kotlinstudy.activity.WebPageActivity
 import com.example.kotlinstudy.bean.Banner
 import com.example.kotlinstudy.bean.PublicInfo
 import com.example.kotlinstudy.utils.Constant
 import com.zhpan.bannerview.BannerViewPager
+import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import kotlinx.android.synthetic.main.item_rv_recommend_author.view.*
@@ -25,6 +27,18 @@ class AuthorListAdapter(var context: Context, var list: ArrayList<PublicInfo>? =
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var banners: List<Banner>? = null
+    var colors = listOf<Int>(ContextCompat.getColor(context, R.color.color_card1),
+        ContextCompat.getColor(context, R.color.color_card2),
+        ContextCompat.getColor(context, R.color.color_card3),
+        ContextCompat.getColor(context, R.color.color_card4),
+        ContextCompat.getColor(context, R.color.color_card5),
+        ContextCompat.getColor(context, R.color.color_card6),
+        ContextCompat.getColor(context, R.color.color_card7),
+        ContextCompat.getColor(context, R.color.color_card8),
+        ContextCompat.getColor(context, R.color.color_card9),
+        ContextCompat.getColor(context, R.color.color_card10),
+        ContextCompat.getColor(context, R.color.color_card11),
+        ContextCompat.getColor(context, R.color.color_card12))
 
     companion object{
         private const val ITEM_TYPE_BANNER = 1
@@ -57,19 +71,27 @@ class AuthorListAdapter(var context: Context, var list: ArrayList<PublicInfo>? =
                     if (context is AppCompatActivity) {
                         setLifecycleRegistry((context as AppCompatActivity).lifecycle)
                     }
+                    setRoundCorner(ViewUtils.dpToPx(8f))//设置圆角
                     setIndicatorStyle(IndicatorStyle.ROUND_RECT)
                     setIndicatorSliderGap(ViewUtils.dpToPx(4f))
-                    setIndicatorMargin(0, 0, 0, ViewUtils.dpToPx(100f).toInt())
-                    setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
+                    setIndicatorSlideMode(IndicatorSlideMode.WORM)
                     setIndicatorSliderRadius(ViewUtils.dpToPx(3f), ViewUtils.dpToPx(4.5f))
                     setIndicatorSliderColor(ContextCompat.getColor(context, R.color.white),
-                        ContextCompat.getColor(context, R.color.white))
+                        ContextCompat.getColor(context, R.color.color_card1))
+                    setIndicatorGravity(IndicatorGravity.END)
                     registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                         override fun onPageSelected(position: Int) {
                         }
                     })
+                    setOnPageClickListener { position ->
+                        val intent = Intent(context, WebPageActivity::class.java)
+                        intent.putExtra(WebPageActivity.INTENT_KEY_URL,banners?.get(position)?.url)
+                        intent.putExtra(WebPageActivity.INTENT_KEY_TITLE,"内容详情")
+                        context.startActivity(intent)
+                    }
 
                 }.create()
+
                 bannerView.refreshData(banners!!)
             }
 
@@ -77,6 +99,7 @@ class AuthorListAdapter(var context: Context, var list: ArrayList<PublicInfo>? =
             var realPosition = position - 1
             with(holder.itemView) {
                 author_name.text = list?.get(realPosition)?.name
+                item_card_view.setCardBackgroundColor(colors[realPosition % 12])
             }
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, ArticleListActivity::class.java)

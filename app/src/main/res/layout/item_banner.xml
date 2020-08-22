@@ -14,9 +14,9 @@
         android:layout_height="30dp"
         android:layout_gravity="bottom"
         android:background="@color/color_black_40"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:textStyle="bold" />
 
 </androidx.cardview.widget.CardView>

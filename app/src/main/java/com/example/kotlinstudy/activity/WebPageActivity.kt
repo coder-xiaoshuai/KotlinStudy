@@ -25,6 +25,9 @@ class WebPageActivity : BaseActivity() {
         initWebView()
         var pageUrl = intent.getStringExtra(INTENT_KEY_URL)
         title = intent.getStringExtra(INTENT_KEY_TITLE)
+        if (!TextUtils.isEmpty(title)){
+            tv_title.text = title
+        }
         if (!TextUtils.isEmpty(pageUrl)) {
             webView.loadUrl(pageUrl)
         }

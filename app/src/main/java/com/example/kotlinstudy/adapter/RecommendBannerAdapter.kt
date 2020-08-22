@@ -1,5 +1,6 @@
 package com.example.kotlinstudy.adapter
 
+import android.text.Html
 import android.text.TextUtils
 import android.view.View
 import com.example.kotlinstudy.R
@@ -16,7 +17,7 @@ class RecommendBannerAdapter:BaseBannerAdapter<Banner,RecommendBannerAdapter.Rec
             if (!TextUtils.isEmpty(data?.imagePath)) {
                 GlideUtils.loadNormal(itemView.context, itemView.banner_image, data!!.imagePath!!)
             }
-            itemView.banner_text.text = data?.title
+            itemView.banner_text.text = Html.fromHtml(data?.title)
         }
     }
 
