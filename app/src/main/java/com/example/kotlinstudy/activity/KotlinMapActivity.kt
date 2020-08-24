@@ -2,6 +2,9 @@ package com.example.kotlinstudy.activity
 
 import android.os.Bundle
 import com.example.common_ui.base.BaseActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class KotlinMapActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,5 +93,11 @@ class KotlinMapActivity : BaseActivity() {
     }
 
     //todo 学习惰性序列
+
+    /*-------协程相关--------*/
+    fun coroutinesTest(){
+        GlobalScope.launch {  }
+        GlobalScope.async {  }
+    }
 
 }

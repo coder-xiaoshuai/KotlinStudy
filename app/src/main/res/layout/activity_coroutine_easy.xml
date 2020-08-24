@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.example.common_ui.views.TopBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="协程简单使用" />
+
+    <Button
+        android:id="@+id/btn_show_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="模拟发送网络请求"
+        />
+
+    <Button
+        android:id="@+id/btn_show_toast2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="模拟发送网络请求2"
+        />
+
+    <Button
+        android:id="@+id/btn_show_toast3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="合并网络请求"
+        />
+
+
+    <Button
+        android:id="@+id/btn_with_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用 withContext{}"
+        />
+
+    <Button
+        android:id="@+id/btn_run_blocking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用 runBlocking{}"
+        />
+
+
+</LinearLayout>
