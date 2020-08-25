@@ -1,7 +1,6 @@
 package com.example.kotlinstudy.activity
 
 import android.content.Intent
-import android.graphics.ComposePathEffect
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -59,8 +58,8 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
         categoryList.add(StudyListBean("仿其他应用效果", ContextCompat.getColor(this,R.color.color_card2)))
         categoryList.add(StudyListBean("Kotlin-->语法", ContextCompat.getColor(this,R.color.color_card3)))
         categoryList.add(StudyListBean("Kotlin-->协程", ContextCompat.getColor(this,R.color.color_card4)))
-        categoryList.add(StudyListBean("自定义view展示", ContextCompat.getColor(this,R.color.color_card5)))
-        categoryList.add(StudyListBean("通知测试", ContextCompat.getColor(this,R.color.color_card6)))
+        categoryList.add(StudyListBean("flutter", ContextCompat.getColor(this,R.color.color_card5)))
+        categoryList.add(StudyListBean("自定义view显示", ContextCompat.getColor(this,R.color.color_card6)))
         categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card7)))
         categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card8)))
         val mainAdapter = MainStudyListAdapter(this,categoryList)
@@ -111,11 +110,12 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
                 startActivity(intent)
             }
             4 -> {
-                val intent = Intent(this, ShowCustomActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
+                ToastUtils.show("暂未开放该功能")
             }
             5 -> {
-                val intent = Intent(this, NotificationTestActivity::class.java)
+                val intent = Intent(this, ShowCustomActivity::class.java)
                 startActivity(intent)
             }
             else -> {
