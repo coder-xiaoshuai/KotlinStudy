@@ -12,6 +12,7 @@ import com.example.kotlinstudy.R
 import com.example.kotlinstudy.adapter.MainStudyListAdapter
 import com.example.kotlinstudy.bean.StudyListBean
 import com.example.kotlinstudy.recyclerview.BaseRecyclerAdapter
+import com.example.kotlinstudy.topactivity.TopActivity
 import com.example.kotlinstudy.utils.DateUtils
 import com.example.kotlinstudy.view.ClickSpanTextView
 import com.example.kotlinstudy.view.helper.GridSpacingItemDecoration
@@ -60,7 +61,7 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
         categoryList.add(StudyListBean("Kotlin-->协程", ContextCompat.getColor(this,R.color.color_card4)))
         categoryList.add(StudyListBean("flutter", ContextCompat.getColor(this,R.color.color_card5)))
         categoryList.add(StudyListBean("自定义view显示", ContextCompat.getColor(this,R.color.color_card6)))
-        categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card7)))
+        categoryList.add(StudyListBean("TopActivity", ContextCompat.getColor(this,R.color.color_card7)))
         categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card8)))
         val mainAdapter = MainStudyListAdapter(this,categoryList)
         mainAdapter.setOnItemClickListener(this)
@@ -116,6 +117,10 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
             }
             5 -> {
                 val intent = Intent(this, ShowCustomActivity::class.java)
+                startActivity(intent)
+            }
+            6 -> {
+                val intent = Intent(this, TopActivity::class.java)
                 startActivity(intent)
             }
             else -> {
