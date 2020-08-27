@@ -20,7 +20,7 @@ import com.example.kotlinstudy.R;
 
 public class TopActivity extends Activity implements OnCheckedChangeListener {
     public static final String EXTRA_FROM_QS_TILE = "from_qs_tile";
-    public static final String ACTION_STATE_CHANGED = "com.willme.topactivity.ACTION_STATE_CHANGED";
+    public static final String ACTION_STATE_CHANGED = "com.example.kotlinstudy.topactivity.ACTION_STATE_CHANGED";
     CompoundButton mWindowSwitch, mNotificationSwitch;
     private BroadcastReceiver mReceiver;
 

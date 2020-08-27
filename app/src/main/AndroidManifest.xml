@@ -79,6 +79,9 @@
         <activity android:name=".activity.CoroutineEasyActivity"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".activity.MobileInfoActivity"
+            android:screenOrientation="portrait" />
+
         <!--topactivity相关-->
         <activity
             android:name=".topactivity.TopActivity"
@@ -128,7 +131,7 @@
 
         <receiver android:name=".topactivity.NotificationActionReceiver">
             <intent-filter>
-                <action android:name="com.willme.topactivity.ACTION_NOTIFICATION_RECEIVER" />
+                <action android:name="com.example.kotlinstudy.topactivity.ACTION_NOTIFICATION_RECEIVER" />
             </intent-filter>
         </receiver>
 

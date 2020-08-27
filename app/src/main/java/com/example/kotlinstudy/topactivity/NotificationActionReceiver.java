@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class NotificationActionReceiver extends BroadcastReceiver {
     public static final int NOTIFICATION_ID = 1;
-    public static final String ACTION_NOTIFICATION_RECEIVER = "com.willme.topactivity.ACTION_NOTIFICATION_RECEIVER";
+    public static final String ACTION_NOTIFICATION_RECEIVER = "com.example.kotlinstudy.topactivity.ACTION_NOTIFICATION_RECEIVER";
     public static final int ACTION_PAUSE = 0;
     public static final int ACTION_RESUME = 1;
     public static final int ACTION_STOP = 2;

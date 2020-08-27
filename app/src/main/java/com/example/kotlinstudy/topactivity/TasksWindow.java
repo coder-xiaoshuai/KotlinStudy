@@ -3,6 +3,7 @@ package com.example.kotlinstudy.topactivity;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,10 @@ public class TasksWindow {
                 Build.VERSION.SDK_INT <= Build.VERSION_CODES.N ?
                         WindowManager.LayoutParams.TYPE_TOAST : WindowManager.LayoutParams.TYPE_PHONE, 0x18,
                 PixelFormat.TRANSLUCENT);
+        //悬浮窗在8.0上有变更
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            sWindowParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        }
         sWindowParams.gravity = Gravity.LEFT + Gravity.TOP;
         sView = LayoutInflater.from(context).inflate(R.layout.window_tasks,
                 null);
@@ -40,6 +45,7 @@ public class TasksWindow {
         try {
             sWindowManager.addView(sView, sWindowParams);
         } catch (Exception e) {
+            Log.e("tag", "发生了异常" + e.toString());
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
             QuickSettingTileService.updateTile(context);

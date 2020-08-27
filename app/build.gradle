@@ -73,4 +73,7 @@ dependencies {
     implementation dependencies.lifecycle_viewmodel_savedstate
     implementation dependencies.lifecycle_common_java8
 
+    //获取手机信息
+    implementation dependencies.mobileinfo
+
 }

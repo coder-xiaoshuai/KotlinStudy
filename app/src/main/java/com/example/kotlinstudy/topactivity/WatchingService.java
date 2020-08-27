@@ -16,6 +16,8 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
 
+import androidx.fragment.app.FragmentManager;
+
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,6 +26,7 @@ public class WatchingService extends Service {
     private final int NOTIF_ID = 1;
     private Handler mHandler = new Handler();
     private ActivityManager mActivityManager;
+    private FragmentManager fragmentManager;
     private String text = null;
     private Timer timer;
     private NotificationManager mNotiManager;

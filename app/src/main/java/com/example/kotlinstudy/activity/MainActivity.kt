@@ -123,6 +123,11 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
                 val intent = Intent(this, TopActivity::class.java)
                 startActivity(intent)
             }
+
+            7 -> {
+                val intent = Intent(this, MobileInfoActivity::class.java)
+                startActivity(intent)
+            }
             else -> {
                 ToastUtils.show("暂未添加分类")
             }
