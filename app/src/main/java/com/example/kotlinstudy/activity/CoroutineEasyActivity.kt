@@ -1,6 +1,7 @@
 package com.example.kotlinstudy.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.common_ui.base.BaseActivity
@@ -21,6 +22,7 @@ class CoroutineEasyActivity : BaseActivity() {
         btn_show_toast3.setOnClickListener(this)
         btn_with_context.setOnClickListener(this)
         btn_run_blocking.setOnClickListener(this)
+        btn_print_test.setOnClickListener(this)
     }
 
     override fun getLayoutId(): Int {
@@ -86,6 +88,25 @@ class CoroutineEasyActivity : BaseActivity() {
         }
     }
 
+    /**
+     * 输出结果是1234
+     */
+    private fun print1234() {
+        mainScope.launch {
+            coroutineScope {
+                delay(1000)
+                Log.i("test", "1")
+                launch {
+                    delay(6000)
+                    Log.i("test", "3")
+                }
+                Log.i("test", "2")
+                return@coroutineScope
+            }
+            Log.i("test", "4")
+        }
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_show_toast -> {
@@ -115,6 +136,9 @@ class CoroutineEasyActivity : BaseActivity() {
                runBlocking {
                    delay(10000)
                }
+            }
+            R.id.btn_print_test ->{
+                print1234()
             }
         }
     }

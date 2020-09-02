@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.utils.ToastUtils
 import com.example.kotlinstudy.bean.*
-import com.example.kotlinstudy.net.Api
 import com.example.kotlinstudy.net.KotlinStudyApi
+import com.example.kotlinstudy.net.NetExceptionHandle
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,18 +26,22 @@ class WanAndroidViewModel : ViewModel() {
         MutableLiveData<List<Banner>>()
     }
 
+    val handler = CoroutineExceptionHandler { _, exception ->
+    }
+
+
     /**
      * 使用协程配合retrofit完成网络请求
      *
      * 包含了请求banner数据和请求推荐公众号列表数据
      */
     fun getRecommendData() {
-        viewModelScope.launch(Dispatchers.Main) {
-            val bannerResponse = withContext(Dispatchers.IO){
+        viewModelScope.launch(NetExceptionHandle.toastExceptionHandler) {
+            val bannerResponse = withContext(Dispatchers.IO) {
                 KotlinStudyApi.api?.getBanners()
             }
 
-            Log.i("xiaoshuai","请求banner成功")
+            Log.i("xiaoshuai", "请求banner成功")
             if (bannerResponse?.isSuccessful == true) {
                 val body = bannerResponse.body()
                 bannerResponse?.body()?.let {
@@ -53,7 +57,7 @@ class WanAndroidViewModel : ViewModel() {
                 KotlinStudyApi.api?.getAuthors()
             }
 
-            Log.i("xiaoshuai","请求列表成功")
+            Log.i("xiaoshuai", "请求列表成功")
             if (response?.isSuccessful == true) {
                 response.body()?.let {
                     if (!it.data.isNullOrEmpty()) {
