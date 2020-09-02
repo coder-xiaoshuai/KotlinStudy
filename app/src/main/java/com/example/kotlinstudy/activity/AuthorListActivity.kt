@@ -26,8 +26,7 @@ class AuthorListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
-        getAuthorList()
-        getBanners()
+        getRecommendData()
     }
 
     override fun getLayoutId(): Int {
@@ -63,9 +62,9 @@ class AuthorListActivity : BaseActivity() {
     /**
      * 获取公众号作者列表
      */
-    private fun getAuthorList() {
+    private fun getRecommendData() {
         val viewModel = ViewModelProvider(this).get(WanAndroidViewModel::class.java)
-        viewModel.getAuthorList()
+        viewModel.getRecommendData()
         viewModel.authorLiveData.observe(this,
             Observer<List<PublicInfo>> {
                 it?.let {
@@ -73,14 +72,7 @@ class AuthorListActivity : BaseActivity() {
                     mAdapter.notifyDataSetChanged()
                 }
             })
-    }
 
-    /**
-     * 获取banner数据
-     */
-    private fun getBanners(){
-        val viewModel = ViewModelProvider(this).get(WanAndroidViewModel::class.java)
-        viewModel.getBanners()
         viewModel.bannerLiveData.observe(this,
             Observer<List<Banner>> {
                 it?.let {

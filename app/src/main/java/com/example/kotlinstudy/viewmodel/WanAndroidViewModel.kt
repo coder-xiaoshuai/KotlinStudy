@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.utils.ToastUtils
 import com.example.kotlinstudy.bean.*
+import com.example.kotlinstudy.net.Api
 import com.example.kotlinstudy.net.KotlinStudyApi
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,51 +26,46 @@ class WanAndroidViewModel : ViewModel() {
         MutableLiveData<List<Banner>>()
     }
 
-    fun getAuthorList() {
-        //网络请求  如果是请求玩安卓的可以直接使用api去使用 baseUrl已经写死  如果想自定义baseUrl可以直接使用KotlinStudyApi.singleCustomRequest
-        KotlinStudyApi.api?.requestChapters()?.enqueue(object :
-            Callback<BaseResult<List<PublicInfo>>> {
-            override fun onFailure(call: Call<BaseResult<List<PublicInfo>>>, t: Throwable) {
-                ToastUtils.show("请求失败${t}")
-                Log.i("zs", t.toString())
+    /**
+     * 使用协程配合retrofit完成网络请求
+     *
+     * 包含了请求banner数据和请求推荐公众号列表数据
+     */
+    fun getRecommendData() {
+        viewModelScope.launch(Dispatchers.Main) {
+            val bannerResponse = withContext(Dispatchers.IO){
+                KotlinStudyApi.api?.getBanners()
             }
 
-            override fun onResponse(call: Call<BaseResult<List<PublicInfo>>>, response: Response<BaseResult<List<PublicInfo>>>) {
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        if (!it.data.isNullOrEmpty()) {
-                            authorLiveData.value = it.data
-                        }
+            Log.i("xiaoshuai","请求banner成功")
+            if (bannerResponse?.isSuccessful == true) {
+                val body = bannerResponse.body()
+                bannerResponse?.body()?.let {
+                    if (!it.data.isNullOrEmpty()) {
+                        bannerLiveData.value = it.data
                     }
-                } else {
-                    ToastUtils.show("服务器维护中,请求失败")
                 }
-            }
-        })
-    }
-
-    fun getBanners() {
-        KotlinStudyApi.api?.banners?.enqueue(object :
-            Callback<BaseResult<List<Banner>>> {
-            override fun onFailure(call: Call<BaseResult<List<Banner>>>, t: Throwable) {
-                ToastUtils.show("请求失败${t}")
+            } else {
+                ToastUtils.show("获取banner失败")
             }
 
-            override fun onResponse(call: Call<BaseResult<List<Banner>>>, response: Response<BaseResult<List<Banner>>>) {
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    response.body()?.let {
-                        if (!it.data.isNullOrEmpty()) {
-                            bannerLiveData.value = it.data
-                        }
+            val response = withContext(Dispatchers.IO) {
+                KotlinStudyApi.api?.getAuthors()
+            }
+
+            Log.i("xiaoshuai","请求列表成功")
+            if (response?.isSuccessful == true) {
+                response.body()?.let {
+                    if (!it.data.isNullOrEmpty()) {
+                        authorLiveData.value = it.data
                     }
-                } else {
-                    ToastUtils.show("服务器维护中,请求失败")
                 }
+            } else {
+                ToastUtils.show("获取公众号列表失败")
             }
-        })
-    }
+        }
 
+    }
 
     fun getDailyQuestionList(page: Int) {
         //网络请求  如果是请求玩安卓的可以直接使用api去使用 baseUrl已经写死  如果想自定义baseUrl可以直接使用KotlinStudyApi.singleCustomRequest

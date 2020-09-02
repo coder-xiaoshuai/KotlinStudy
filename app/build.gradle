@@ -49,6 +49,7 @@ dependencies {
     implementation dependencies.cardview
     implementation dependencies.mpchart
     implementation dependencies.banner
+    implementation dependencies.menubar
 
 
     implementation dependencies.glide

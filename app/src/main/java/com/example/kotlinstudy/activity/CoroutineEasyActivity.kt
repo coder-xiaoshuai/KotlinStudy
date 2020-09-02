@@ -12,7 +12,7 @@ class CoroutineEasyActivity : BaseActivity() {
 
     private var job1: Job? = null
 
-    private val mainScope = MainScope()
+    private val mainScope = MainScope() + CoroutineName("CoroutineEasyActivity")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

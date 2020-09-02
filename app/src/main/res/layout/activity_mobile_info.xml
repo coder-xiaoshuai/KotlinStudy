@@ -8,6 +8,7 @@
     <com.example.common_ui.views.TopBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:rightIcon1Src="@drawable/icon_more_option"
         app:title="手机信息" />
 
     <ScrollView
