@@ -2,9 +2,6 @@ package com.example.kotlinstudy.activity
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import android.view.SurfaceHolder
 import android.view.View
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
