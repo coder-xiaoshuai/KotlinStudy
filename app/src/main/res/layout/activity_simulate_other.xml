@@ -39,6 +39,11 @@
                 style="@style/main_button_common_style"
                 android:text="仿FUNJI图表" />
 
+            <Button
+                android:id="@+id/btn_simulate_duiyuan"
+                style="@style/main_button_common_style"
+                android:text="仿对缘效果" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

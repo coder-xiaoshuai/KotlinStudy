@@ -12,6 +12,7 @@ class SimulateOtherActivity:BaseActivity() {
         super.onCreate(savedInstanceState)
         btn_simulate_kaola.setOnClickListener(this)
         btn_simulate_fanji.setOnClickListener(this)
+        btn_simulate_duiyuan.setOnClickListener(this)
     }
 
     override fun getLayoutId(): Int {
@@ -27,6 +28,11 @@ class SimulateOtherActivity:BaseActivity() {
 
             R.id.btn_simulate_fanji ->{
                 val intent = Intent(this, LineChartActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btn_simulate_duiyuan ->{
+                val intent = Intent(this, VideoGuideActivity2::class.java)
                 startActivity(intent)
             }
         }

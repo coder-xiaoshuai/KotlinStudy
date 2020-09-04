@@ -5,8 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!--topactivity相关-->
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".base.KotlinStudyApplication"
@@ -59,28 +59,45 @@
             android:name=".activity.KotlinMapActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.ShowCustomActivity"
+        <activity
+            android:name=".activity.ShowCustomActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/translucent"
-            />
+            android:theme="@style/translucent" />
 
-        <activity android:name=".activity.SimulateOtherActivity"
+        <activity
+            android:name=".activity.SimulateOtherActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.KaolaActivity"
+        <activity
+            android:name=".activity.KaolaActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.NotificationTestActivity"
+        <activity
+            android:name=".activity.NotificationTestActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.LineChartActivity"
+        <activity
+            android:name=".activity.LineChartActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.CoroutineEasyActivity"
+        <activity
+            android:name=".activity.CoroutineEasyActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.MobileInfoActivity"
+        <activity
+            android:name=".activity.MobileInfoActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.VideoGuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/splash_fullscreen" />
+
+        <activity
+            android:name=".activity.VideoGuideActivity2"
+            android:screenOrientation="portrait"
+            android:theme="@style/splash_fullscreen" />
+
 
         <!--topactivity相关-->
         <activity
@@ -135,13 +152,13 @@
             </intent-filter>
         </receiver>
 
-<!--        <service android:name=".service.NotificationMonitor"-->
-<!--            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"-->
-<!--            >-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.service.notification.NotificationListenerService" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
+        <!--        <service android:name=".service.NotificationMonitor"-->
+        <!--            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"-->
+        <!--            >-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.service.notification.NotificationListenerService" />-->
+        <!--            </intent-filter>-->
+        <!--        </service>-->
     </application>
 
 </manifest>
