@@ -2,6 +2,7 @@ package com.example.kotlinstudy.activity
 
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +25,6 @@ class StarDetailActivity:BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         GlideUtils.loadNormal(this,image_photo,"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599286812161&di=1f4414ffbed89ddf6613a81243511b2d&imgtype=0&src=http%3A%2F%2F00imgmini.eastday.com%2Fmobile%2F20180914%2F20180914010926_bfe9626a3dd401474e4343eb5db2afbc_2.jpeg")
-//        GlideUtils.loadNormal(this,image_bottom,"https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3128011664,408345996&fm=26&gp=0.jpg")
         initView()
     }
 

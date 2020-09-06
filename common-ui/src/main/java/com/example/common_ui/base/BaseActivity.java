@@ -94,6 +94,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         return DEFAULT_ALPHA;
     }
 
+    protected void setStatusBarTranslucent(){
+        StatusBarUtil.setTranslucent(this);
+    }
+
     /**
      * 获得当前的 fragment 主要用于在 fragment 里面接受 onActivityResult
      */

@@ -178,8 +178,8 @@
 
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-        <!--固定在顶部的布局-->
 
+        <!--固定在顶部的布局-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
