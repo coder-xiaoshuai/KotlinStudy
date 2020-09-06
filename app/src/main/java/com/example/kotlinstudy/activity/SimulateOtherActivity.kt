@@ -10,9 +10,10 @@ import kotlinx.android.synthetic.main.activity_simulate_other.*
 class SimulateOtherActivity:BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        btn_simulate_kaola.setOnClickListener(this)
+//        btn_simulate_kaola.setOnClickListener(this)
         btn_simulate_fanji.setOnClickListener(this)
         btn_simulate_duiyuan.setOnClickListener(this)
+        btn_simulate_star.setOnClickListener(this)
     }
 
     override fun getLayoutId(): Int {
@@ -21,10 +22,10 @@ class SimulateOtherActivity:BaseActivity() {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_simulate_kaola -> {
-                val intent = Intent(this, KaolaActivity::class.java)
-                startActivity(intent)
-            }
+//            R.id.btn_simulate_kaola -> {
+//                val intent = Intent(this, KaolaActivity::class.java)
+//                startActivity(intent)
+//            }
 
             R.id.btn_simulate_fanji ->{
                 val intent = Intent(this, LineChartActivity::class.java)
@@ -33,6 +34,11 @@ class SimulateOtherActivity:BaseActivity() {
 
             R.id.btn_simulate_duiyuan ->{
                 val intent = Intent(this, VideoGuideActivity2::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btn_simulate_star ->{
+                val intent = Intent(this, StarDetailActivity::class.java)
                 startActivity(intent)
             }
         }

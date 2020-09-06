@@ -29,10 +29,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_simulate_kaola"
-                style="@style/main_button_common_style"
-                android:text="仿考拉个人" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_simulate_kaola"-->
+<!--                style="@style/main_button_common_style"-->
+<!--                android:text="仿考拉个人" />-->
 
             <Button
                 android:id="@+id/btn_simulate_fanji"
@@ -43,6 +43,11 @@
                 android:id="@+id/btn_simulate_duiyuan"
                 style="@style/main_button_common_style"
                 android:text="仿对缘效果" />
+
+            <Button
+                android:id="@+id/btn_simulate_star"
+                style="@style/main_button_common_style"
+                android:text="仿优星库个人页" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
