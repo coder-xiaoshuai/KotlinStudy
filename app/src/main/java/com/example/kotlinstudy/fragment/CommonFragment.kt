@@ -28,6 +28,7 @@ class CommonFragment : BaseFragment() {
         "列表内容",
         "列表内容",
         "列表内容")
+    private lateinit var adapter: CommonListAdapter
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_common
@@ -40,7 +41,8 @@ class CommonFragment : BaseFragment() {
         activity?.let {
             rv_common_list.layoutManager =
                 LinearLayoutManager(it, LinearLayoutManager.VERTICAL, false)
-            rv_common_list.adapter = CommonListAdapter(it, dataList)
+            adapter = CommonListAdapter(it, dataList)
+            rv_common_list.adapter = adapter
         }
 
 
@@ -48,6 +50,12 @@ class CommonFragment : BaseFragment() {
             mainScope.launch {
                 delay(1000)
                 refresh_layout.finishLoadMore()
+                dataList.add("更多列表内容")
+                dataList.add("更多列表内容")
+                dataList.add("更多列表内容")
+                dataList.add("更多列表内容")
+                dataList.add("更多列表内容")
+                adapter.notifyDataSetChanged()
                 ToastUtils.show("加载完成")
             }
         }
