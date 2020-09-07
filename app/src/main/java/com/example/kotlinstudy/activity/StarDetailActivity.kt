@@ -115,17 +115,17 @@ class StarDetailActivity : BaseActivity() {
             window.decorView.systemUiVisibility = option
             window.statusBarColor = Color.TRANSPARENT
         }
-        //监听是否有虚拟键盘
-        val bottomBarHeight = ScreenUtils.getNavigationBarHeight(this)
-        mainScope.launch {
-            delay(100)
-            if (bottomBarHeight > 0 && ScreenUtils.isNavigationBarExist(this@StarDetailActivity)) {
-                val params = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                    FrameLayout.LayoutParams.WRAP_CONTENT)
-                params.bottomMargin = bottomBarHeight
-                rootView.layoutParams = params
-            }
-        }
+//        //监听是否有虚拟键盘
+//        val bottomBarHeight = ScreenUtils.getNavigationBarHeight(this)
+//        mainScope.launch {
+//            delay(100)
+//            if (bottomBarHeight > 0 && ScreenUtils.isNavigationBarExist(this@StarDetailActivity)) {
+//                val params = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+//                    FrameLayout.LayoutParams.WRAP_CONTENT)
+//                params.bottomMargin = bottomBarHeight
+//                rootView.layoutParams = params
+//            }
+//        }
 
         // 适配异型屏
         if (Build.VERSION.SDK_INT > 28) {
