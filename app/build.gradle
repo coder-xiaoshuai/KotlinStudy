@@ -29,6 +29,45 @@ android {
     }
 }
 
+project.afterEvaluate {
+
+    task sizeCalculate(group: 'jr', description: 'calculate size of aars') {
+        doFirst {
+            String[] filterGroups = ['com.jd.jrapp.jdpay']
+            String text = "";
+            int size = 0;
+            println("文件个数" + configurations.archives)
+            println("文件个数" + configurations.archives.files.size())
+
+            configurations.archives.files.findAll { File file ->
+                println "进入过滤"
+                    return true
+            }.each {
+                println "存在file"
+                int itSize = it.size()
+                size += itSize
+                String itSizeStr = itSize.toString()
+                def sizeLength = itSizeStr.size()
+                String space=" "
+                if(sizeLength<9){
+                    for (int i = 0; i < 9 - sizeLength; i++) {
+                        space+=" ";
+                    }
+                }
+                String info = itSizeStr + space + it.name
+                text += info + "\n"
+            }
+            text += "\n三方库大小Total: " + size;
+            println text
+            file('releasenote/size.txt').text = text;
+        }
+        doLast {
+            println "\033[32;1mCreated aars size info at releasenote/size.txt" +
+                    "\033[0m"
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.aar","*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
