@@ -17,9 +17,8 @@ class VideoGuideActivity2 : BaseActivity() {
         fullScreenAdapt()
         mediaPlayerManager = MediaPlayerManager(this, surfaceView)
 
-        mediaPlayerManager?.setRawId(R.raw.login_bg)
+        mediaPlayerManager?.setRawId(R.raw.video_login_bg3)
         mediaPlayerManager?.setOnPreparedListener(MediaPlayer.OnPreparedListener { mp -> mp?.start() })  //视频都是prepareAsync 所以需要在监听回调中开始播放视频
-
         mediaPlayerManager?.getMediaPlayer()?.isLooping = true  //设置循环播放
     }
 

@@ -1,39 +1,44 @@
 project.afterEvaluate {
 
-  task sizeCalculate(group: 'jr', description: 'calculate size of aars') {
-    doFirst {
-      String[] filterGroups = ['com.jd.jrapp.jdpay']
-      String text = "";
-      int size = 0;
-      configurations.archives.files.findAll { File file ->
-        String groupId = file.parentFile.parentFile.parentFile.parentFile.name
-        for (String filter : filterGroups) {
-          if (groupId.contains(filter)) {
-            return true
-          }
+    task sizeCalculate(group: 'jr', description: 'calculate size of aars') {
+        doFirst {
+            String[] filterGroups = ['com.jd.jrapp.jdpay']
+            String text = "";
+            int size = 0;
+            try {
+                configurations.archives.files.findAll { File file ->
+                    String groupId = file.parentFile.parentFile.parentFile.parentFile.name
+//        for (String filter : filterGroups) {
+//          if (groupId.contains(filter)) {
+//            return true
+//          }
+//        }
+                    return true
+                }.each {
+                    int itSize = it.size()
+                    size += itSize
+                    String itSizeStr = itSize.toString()
+                    def sizeLength = itSizeStr.size()
+                    String space = " "
+                    if (sizeLength < 9) {
+                        for (int i = 0; i < 9 - sizeLength; i++) {
+                            space += " ";
+                        }
+                    }
+                    String info = itSizeStr + space + it.name
+                    text += info + "\n"
+                }
+                text += "\nTotal: " + size;
+                println text
+                file('releasenote/size.txt').text = text;
+            } catch (Exception e) {
+                println(e.toString())
+            }
+
         }
-        return false
-      }.each {
-        int itSize = it.size()
-        size += itSize
-        String itSizeStr = itSize.toString()
-        def sizeLength = itSizeStr.size()
-        String space=" "
-        if(sizeLength<9){
-          for (int i = 0; i < 9 - sizeLength; i++) {
-            space+=" ";
-          }
+        doLast {
+            println "\033[32;1mCreated aars size info at releasenote/size.txt" +
+                    "\033[0m"
         }
-        String info = itSizeStr + space + it.name
-        text += info + "\n"
-      }
-      text += "\nTotal: " + size;
-      println text
-      file('releasenote/size.txt').text = text;
     }
-    doLast {
-      println "\033[32;1mCreated aars size info at releasenote/size.txt" +
-              "\033[0m"
-    }
-  }
 }
