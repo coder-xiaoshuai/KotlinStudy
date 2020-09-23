@@ -98,8 +98,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/splash_fullscreen" />
 
-        <activity android:name=".activity.StarDetailActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.StarDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.LocalQuestionActivity"
+            android:screenOrientation="portrait" />
 
 
         <!--topactivity相关-->

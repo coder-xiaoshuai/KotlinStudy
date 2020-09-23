@@ -63,6 +63,7 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
         categoryList.add(StudyListBean("自定义view显示", ContextCompat.getColor(this,R.color.color_card6)))
         categoryList.add(StudyListBean("TopActivity", ContextCompat.getColor(this,R.color.color_card7)))
         categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card8)))
+        categoryList.add(StudyListBean("question", ContextCompat.getColor(this,R.color.color_card9)))
         val mainAdapter = MainStudyListAdapter(this,categoryList)
         mainAdapter.setOnItemClickListener(this)
         rv_study_list.layoutManager = GridLayoutManager(this, 2)
@@ -126,6 +127,11 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
 
             7 -> {
                 val intent = Intent(this, MobileInfoActivity::class.java)
+                startActivity(intent)
+            }
+
+            8 -> {
+                val intent = Intent(this, LocalQuestionActivity::class.java)
                 startActivity(intent)
             }
             else -> {
