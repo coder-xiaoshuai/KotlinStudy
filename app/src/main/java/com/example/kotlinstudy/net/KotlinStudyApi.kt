@@ -1,9 +1,12 @@
 package com.example.kotlinstudy.net
 
 import com.example.common.utils.GlobalConfig
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
@@ -33,6 +36,17 @@ object KotlinStudyApi {
             .writeTimeout(15, TimeUnit.SECONDS)
             .connectTimeout(15, TimeUnit.SECONDS)
             .cache(cache)
+            .addInterceptor { chain ->
+                val original = chain.request()
+                val request = original.newBuilder()
+                    .header("User-Agent", "KotlinStudy")
+                    .header("Accept-Encoding", "gzip")
+                    .method(original.method(), original.body())
+                    .build()
+
+                chain.proceed(request)
+            }
+            .addNetworkInterceptor(StethoInterceptor())
             .build()
     }
 
@@ -59,6 +73,17 @@ object KotlinStudyApi {
             .readTimeout(15, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
             .connectTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor { chain ->
+                val original = chain.request()
+                val request = original.newBuilder()
+                    .header("User-Agent", "KotlinStudy")
+                    .header("Accept-Encoding", "gzip")
+                    .method(original.method(), original.body())
+                    .build()
+
+                chain.proceed(request)
+            }
+            .addNetworkInterceptor(StethoInterceptor())
             .build()
         val retrofit = Retrofit.Builder()
             .client(client)

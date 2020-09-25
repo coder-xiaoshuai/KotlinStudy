@@ -14,7 +14,16 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //指定room.schemaLocation生成的文件路径  处理Room 警告 Schema export Error
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     compileOptions {
@@ -60,7 +69,7 @@ project.afterEvaluate {
             }
             text += "\n三方库大小Total: " + size;
             println text
-            file('releasenote/size.txt').text = text;
+//            file('releasenote/size.txt').text = text
         }
         doLast {
             println "\033[32;1mCreated aars size info at releasenote/size.txt" +
@@ -85,6 +94,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     def dependencies = rootProject.ext.dependencies
+
+    //方便查看数据
+    implementation dependencies.stetho
+    implementation dependencies.stetho_okhttp
+    implementation dependencies.stetho_js
+
     implementation dependencies.recyclerview
     implementation dependencies.cardview
     implementation dependencies.mpchart
@@ -117,5 +132,8 @@ dependencies {
 
     //获取手机信息
     implementation dependencies.mobileinfo
+
+    //65535
+    implementation dependencies.multidex
 
 }

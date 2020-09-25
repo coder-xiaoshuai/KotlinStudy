@@ -18,4 +18,31 @@ object DateUtils {
         }
         return result
     }
+
+    /**
+     * 是否成年
+     */
+    fun isAdult(birthDay: String?): Boolean {
+        val dates = birthDay?.split("-")
+        dates?.let {
+            val calendar = Calendar.getInstance()
+            val year: Int = calendar.get(Calendar.YEAR) - DataUtils.toInt(dates[0])
+            if (year > 18) {
+                return true
+            } else if (year < 18) {
+                return false
+            }
+            // 如果年相等，就比较月份
+            val month: Int = calendar.get(Calendar.MONTH) - DataUtils.toInt(dates[1])
+            if (month > 0) {
+                return true
+            } else if (month < 0) {
+                return false
+            }
+            // 如果月也相等，就比较天
+            val day: Int = calendar.get(Calendar.DAY_OF_MONTH) - DataUtils.toInt(dates[2])
+            return day >= 0
+        }
+        return false
+    }
 }

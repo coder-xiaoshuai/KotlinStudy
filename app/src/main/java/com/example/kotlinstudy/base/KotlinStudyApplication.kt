@@ -2,13 +2,16 @@ package com.example.kotlinstudy.base
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import androidx.multidex.MultiDex
 import com.example.common.utils.CommonSpUtils
 import com.example.common.utils.GlobalConfig
 import com.example.common.utils.ToastUtils
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.activity.MainActivity
+import com.facebook.stetho.Stetho
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -33,12 +36,18 @@ class KotlinStudyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Stetho.initializeWithDefaults(this);
         //初始化Toast
         ToastUtils.init(this)
         GlobalConfig.setContext(this)
         //初始化Sp
         CommonSpUtils.init(this)
         registerLifeCallback()
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 
     private var activityCount : Int = 0

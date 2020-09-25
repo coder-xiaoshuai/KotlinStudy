@@ -2,6 +2,7 @@ package com.example.kotlinstudy.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,6 +26,13 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+
+        Log.i("MainActivity","结果"+DateUtils.isAdult("2001-09-23"))
+        Log.i("MainActivity","结果"+DateUtils.isAdult("2002-09-24"))
+        Log.i("MainActivity","结果"+DateUtils.isAdult("2002-09-25"))
+        Log.i("MainActivity","结果"+DateUtils.isAdult("2001-08-23"))
+        Log.i("MainActivity","结果"+DateUtils.isAdult("2002-09-26"))
+        Log.i("MainActivity","结果"+DateUtils.isAdult("2002-09-25"))
     }
 
     override fun getLayoutId(): Int {
