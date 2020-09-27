@@ -103,7 +103,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.LocalQuestionActivity"
+            android:name=".activity.InputQuestionActivity"
             android:screenOrientation="portrait" />
 
 

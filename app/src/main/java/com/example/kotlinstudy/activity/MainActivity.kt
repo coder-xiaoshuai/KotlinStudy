@@ -139,7 +139,7 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
             }
 
             8 -> {
-                val intent = Intent(this, LocalQuestionActivity::class.java)
+                val intent = Intent(this, InputQuestionActivity::class.java)
                 startActivity(intent)
             }
             else -> {
