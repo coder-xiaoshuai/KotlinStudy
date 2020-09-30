@@ -2,3 +2,11 @@ include ':common-ui'
 include ':common'
 include ':app'
 rootProject.name = "KotlinStudy"
+
+//setBinding(new Binding([gradle: this]))                                // new
+//evaluate(new File(                                                     // new
+//        settingsDir.parentFile,                                              // new
+//        'flutter_common/flutter_common/.android/include_flutter.groovy'                         // new
+//))
+//include ':flutter_common'
+//project(':flutter_common').projectDir = new File('../flutter_common/flutter_common')

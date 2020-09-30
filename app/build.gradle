@@ -7,6 +7,21 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    signingConfigs {
+        release {
+            keyAlias "key0"
+            keyPassword "123456"
+            storeFile file("test")
+            storePassword "123456"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
     defaultConfig {
         applicationId "com.example.kotlinstudy"
         minSdkVersion 19
@@ -32,7 +47,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -135,5 +156,7 @@ dependencies {
 
     //65535
     implementation dependencies.multidex
+
+//    implementation project(':flutter')
 
 }
