@@ -32,8 +32,8 @@ object DateUtils {
             } else if (year < 18) {
                 return false
             }
-            // 如果年相等，就比较月份
-            val month: Int = calendar.get(Calendar.MONTH) - DataUtils.toInt(dates[1])
+            // 如果年相等，就比较月份 获取月份记得+1
+            val month: Int = calendar.get(Calendar.MONTH) + 1 - DataUtils.toInt(dates[1])
             if (month > 0) {
                 return true
             } else if (month < 0) {

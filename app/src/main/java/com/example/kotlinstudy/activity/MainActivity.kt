@@ -2,6 +2,7 @@ package com.example.kotlinstudy.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -64,6 +65,7 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
         categoryList.add(StudyListBean("TopActivity", ContextCompat.getColor(this,R.color.color_card7)))
         categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card8)))
         categoryList.add(StudyListBean("question", ContextCompat.getColor(this,R.color.color_card9)))
+        categoryList.add(StudyListBean("robust", ContextCompat.getColor(this,R.color.color_card9)))
         val mainAdapter = MainStudyListAdapter(this,categoryList)
         mainAdapter.setOnItemClickListener(this)
         rv_study_list.layoutManager = GridLayoutManager(this, 2)

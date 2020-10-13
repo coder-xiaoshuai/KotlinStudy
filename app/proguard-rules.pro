@@ -33,5 +33,7 @@
   *** rewind();
 }
 
-# for DexGuard only
--keep resourcexmlelements manifest/application/meta-data@value=GlideModule
+## for DexGuard only
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+-keepclassmembers class **{ public static com.meituan.robust.ChangeQuickRedirect *; }

@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+//使用插件时，需要把auto-patch-plugin放置在com.android.application插件之后，其余插件之前。
+//apply plugin: 'auto-patch-plugin'
+apply plugin: 'robust'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "kotlin-kapt"
@@ -49,7 +52,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.release
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
@@ -158,5 +161,8 @@ dependencies {
     implementation dependencies.multidex
 
 //    implementation project(':flutter')
+
+    //美团热修复
+    implementation "com.meituan.robust:robust:0.4.99"
 
 }
