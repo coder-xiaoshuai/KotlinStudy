@@ -37,3 +37,4 @@
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
 -keepclassmembers class **{ public static com.meituan.robust.ChangeQuickRedirect *; }
+
