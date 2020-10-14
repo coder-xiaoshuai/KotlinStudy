@@ -136,6 +136,11 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
                 val intent = Intent(this, InputQuestionActivity::class.java)
                 startActivity(intent)
             }
+
+            9 -> {
+                val intent = Intent(this, RobustTestActivity::class.java)
+                startActivity(intent)
+            }
             else -> {
                 ToastUtils.show("暂未添加分类")
             }
