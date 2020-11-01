@@ -10,11 +10,11 @@ import com.example.common.utils.CommonSpUtils
 import com.example.common.utils.GlobalConfig
 import com.example.common.utils.ToastUtils
 import com.example.kotlinstudy.R
-import com.example.kotlinstudy.activity.MainActivity
 import com.facebook.stetho.Stetho
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.tencent.mmkv.MMKV
 import java.util.*
 
 
@@ -42,6 +42,8 @@ class KotlinStudyApplication : Application() {
         GlobalConfig.setContext(this)
         //初始化Sp
         CommonSpUtils.init(this)
+        //初始化mmkv
+        MMKV.initialize(this)
         registerLifeCallback()
     }
 

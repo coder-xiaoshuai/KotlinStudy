@@ -90,7 +90,11 @@ ext {
             stetho_js                     : "com.facebook.stetho:stetho-js-rhino:1.5.1",
 
             //65535问题
-            multidex                      : "androidx.multidex:multidex:$multidex_version"
+            multidex                      : "androidx.multidex:multidex:$multidex_version",
+
+            robust                        : 'com.meituan.robust:robust:0.4.99',
+
+            mmkv                          : 'com.tencent:mmkv-static:1.2.4'
 
 
     ]

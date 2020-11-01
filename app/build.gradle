@@ -163,6 +163,9 @@ dependencies {
 //    implementation project(':flutter')
 
     //美团热修复
-    implementation "com.meituan.robust:robust:0.4.99"
+    implementation dependencies.robust
+
+    //mmkv 可以替代系统的sp
+    implementation dependencies.mmkv
 
 }

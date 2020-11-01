@@ -11,6 +11,7 @@
         <!--这个开关只是把配置项patchPackname包名下的所有类制作成补丁，适用于特殊情况，一般不会遇到-->
         <!--<manual>true</manual>-->
         <manual>false</manual>
+apkapk
 
         <!--是否强制插入插入代码，Robust默认在debug模式下是关闭的，开启这个选项为true会在debug下插入代码-->
         <!--但是当配置项turnOnRobust是false时，这个配置项不会生效-->

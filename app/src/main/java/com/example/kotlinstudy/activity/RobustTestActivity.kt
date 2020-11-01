@@ -3,24 +3,29 @@ package com.example.kotlinstudy.activity
 import android.Manifest
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
+import com.example.common.utils.ToastUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.robust.PatchManipulateImp
 import com.meituan.robust.Patch
 import com.meituan.robust.PatchExecutor
 import com.meituan.robust.RobustCallBack
+import com.meituan.robust.patch.RobustModify
+import com.meituan.robust.patch.annotaion.Modify
 import kotlinx.android.synthetic.main.activity_robust_test.*
 
 class RobustTestActivity : BaseActivity() {
+
+//    @Modify
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         btn_robust_test.setOnClickListener {
-//            RobustModify.modify()
-            Log.i("robust", "错误setOnClickListener")
+            Toast.makeText(this@RobustTestActivity, "错误是撒发大水发121312", Toast.LENGTH_SHORT).show()
         }
 
         btn_load_patch.setOnClickListener {
