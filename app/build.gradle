@@ -168,4 +168,9 @@ dependencies {
     //mmkv 可以替代系统的sp
     implementation dependencies.mmkv
 
+    implementation dependencies.eventbus
+
+    implementation 'me.hegj:JetpackMvvm:1.1.9'
+
+
 }

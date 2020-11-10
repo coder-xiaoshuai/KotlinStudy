@@ -91,10 +91,12 @@ ext {
 
             //65535问题
             multidex                      : "androidx.multidex:multidex:$multidex_version",
-
+            //美团热更新
             robust                        : 'com.meituan.robust:robust:0.4.99',
+            //sp替换方案
+            mmkv                          : 'com.tencent:mmkv-static:1.2.4',
 
-            mmkv                          : 'com.tencent:mmkv-static:1.2.4'
+            eventbus                      : 'org.greenrobot:eventbus:3.2.0'
 
 
     ]
