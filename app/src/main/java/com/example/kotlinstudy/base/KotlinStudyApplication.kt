@@ -5,6 +5,9 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
 import com.example.common.utils.CommonSpUtils
 import com.example.common.utils.GlobalConfig
@@ -18,7 +21,7 @@ import com.tencent.mmkv.MMKV
 import java.util.*
 
 
-class KotlinStudyApplication : Application() {
+class KotlinStudyApplication : Application(), ViewModelStoreOwner {
 
     init {
         //设置全局的Header构建器
@@ -34,8 +37,17 @@ class KotlinStudyApplication : Application() {
 
     private val activityStack = LinkedList<Activity>()
 
+
+    private lateinit var mAppViewModelStore: ViewModelStore
+    private var mFactory: ViewModelProvider.Factory? = null
+
+    override fun getViewModelStore(): ViewModelStore {
+        return mAppViewModelStore
+    }
+
     override fun onCreate() {
         super.onCreate()
+        mAppViewModelStore = ViewModelStore()
         Stetho.initializeWithDefaults(this);
         //初始化Toast
         ToastUtils.init(this)
@@ -52,11 +64,11 @@ class KotlinStudyApplication : Application() {
         MultiDex.install(this)
     }
 
-    private var activityCount : Int = 0
-    private fun registerLifeCallback(){
-        registerActivityLifecycleCallbacks(object:ActivityLifecycleCallbacks{
+    private var activityCount: Int = 0
+    private fun registerLifeCallback() {
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity) {
-                Log.i("zs","onActivityPaused$activity")
+                Log.i("zs", "onActivityPaused$activity")
             }
 
             override fun onActivityStarted(activity: Activity) {
@@ -68,16 +80,16 @@ class KotlinStudyApplication : Application() {
             }
 
             override fun onActivityDestroyed(activity: Activity) {
-                Log.i("zs","onActivityDestroyed$activity")
+                Log.i("zs", "onActivityDestroyed$activity")
                 activityStack.remove(activity)
             }
 
             override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-                Log.i("zs","onActivitySaveInstanceState$activity")
+                Log.i("zs", "onActivitySaveInstanceState$activity")
             }
 
             override fun onActivityStopped(activity: Activity) {
-                Log.i("zs","onActivityStopped$activity")
+                Log.i("zs", "onActivityStopped$activity")
                 activityCount--
                 if (activityCount <= 0) {
                     //应用进入后台
@@ -85,13 +97,27 @@ class KotlinStudyApplication : Application() {
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                Log.i("zs","onActivityCreated$activity")
+                Log.i("zs", "onActivityCreated$activity")
                 activityStack.add(activity)
             }
 
             override fun onActivityResumed(activity: Activity) {
-                Log.i("zs","onActivityResumed$activity")
+                Log.i("zs", "onActivityResumed$activity")
             }
         })
+    }
+
+    /**
+     * 获取一个全局的ViewModel
+     */
+    fun getAppViewModelProvider(): ViewModelProvider {
+        return ViewModelProvider(this, this.getAppFactory())
+    }
+
+    private fun getAppFactory(): ViewModelProvider.Factory {
+        if (mFactory == null) {
+            mFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(this)
+        }
+        return mFactory as ViewModelProvider.Factory
     }
 }

@@ -49,6 +49,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    //使用databinding
+    buildFeatures {
+        dataBinding = true
+    }
+//4.0以下使用databinding
+//    dataBinding{
+//        enabled = true
+//    }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.release
@@ -169,8 +178,6 @@ dependencies {
     implementation dependencies.mmkv
 
     implementation dependencies.eventbus
-
-    implementation 'me.hegj:JetpackMvvm:1.1.9'
 
 
 }

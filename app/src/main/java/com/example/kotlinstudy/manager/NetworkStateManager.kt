@@ -1,7 +1,7 @@
-package com.example.kotlinstudy.mvvm
+package com.example.kotlinstudy.manager
 
-import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
-import me.hgj.jetpackmvvm.network.manager.NetState
+import com.example.kotlinstudy.base.UnPeekLiveData
+import com.example.kotlinstudy.net.NetState
 
 class NetworkStateManager private constructor() {
     val mNetWorkStateCallback = UnPeekLiveData<NetState>()

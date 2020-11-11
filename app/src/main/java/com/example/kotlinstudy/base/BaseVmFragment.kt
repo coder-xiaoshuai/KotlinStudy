@@ -1,4 +1,4 @@
-package com.example.kotlinstudy.mvvm
+package com.example.kotlinstudy.base
 
 import android.content.Context
 import android.os.Bundle
@@ -10,8 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import me.hgj.jetpackmvvm.ext.getVmClazz
-import me.hgj.jetpackmvvm.network.manager.NetState
+import com.example.kotlinstudy.ext.getVmClazz
+import com.example.kotlinstudy.manager.NetworkStateManager
+import com.example.kotlinstudy.net.NetState
 
 /**
  * 描述　: ViewModelFragment基类，自动把ViewModel注入Fragment
