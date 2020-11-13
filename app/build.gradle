@@ -184,5 +184,6 @@ dependencies {
 
     implementation dependencies.eventbus
 
+    implementation dependencies.gsyplayer
 
 }

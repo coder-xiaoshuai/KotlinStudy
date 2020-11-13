@@ -99,7 +99,9 @@ ext {
             //sp替换方案
             mmkv                          : 'com.tencent:mmkv-static:1.2.4',
 
-            eventbus                      : 'org.greenrobot:eventbus:3.2.0'
+            eventbus                      : 'org.greenrobot:eventbus:3.2.0',
+
+            gsyplayer                     : 'com.shuyu:GSYVideoPlayer:7.1.8'
 
 
     ]
