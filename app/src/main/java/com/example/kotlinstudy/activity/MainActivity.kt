@@ -65,7 +65,8 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
         categoryList.add(StudyListBean("TopActivity", ContextCompat.getColor(this,R.color.color_card7)))
         categoryList.add(StudyListBean("预留分类", ContextCompat.getColor(this,R.color.color_card8)))
         categoryList.add(StudyListBean("question", ContextCompat.getColor(this,R.color.color_card9)))
-        categoryList.add(StudyListBean("robust", ContextCompat.getColor(this,R.color.color_card9)))
+        categoryList.add(StudyListBean("robust", ContextCompat.getColor(this,R.color.color_card10)))
+        categoryList.add(StudyListBean("网络状态", ContextCompat.getColor(this,R.color.color_card11)))
         val mainAdapter = MainStudyListAdapter(this,categoryList)
         mainAdapter.setOnItemClickListener(this)
         rv_study_list.layoutManager = GridLayoutManager(this, 2)
@@ -139,6 +140,11 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
 
             9 -> {
                 val intent = Intent(this, RobustTestActivity::class.java)
+                startActivity(intent)
+            }
+
+            10 -> {
+                val intent = Intent(this, NetworkChangeActivity::class.java)
                 startActivity(intent)
             }
             else -> {

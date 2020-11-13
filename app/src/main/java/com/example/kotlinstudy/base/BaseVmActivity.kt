@@ -28,7 +28,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity(){
         registerUiChange()
         initView(savedInstanceState)
         createObserver()
-        NetworkStateManager.instance.mNetWorkStateCallback.observe(this, Observer {
+        NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
             onNetworkStateChanged(it)
         })
     }

@@ -1,5 +1,5 @@
 package com.example.kotlinstudy.net
 
-class NetState {
+class NetState(
     var isSuccess: Boolean = true
-}
+)

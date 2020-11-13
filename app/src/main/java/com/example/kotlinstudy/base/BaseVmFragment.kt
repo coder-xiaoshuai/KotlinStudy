@@ -57,7 +57,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
             view?.postDelayed({
                 lazyLoadData()
                 //在fragment中，只有懒加载过了才能开启网络变化监听
-                NetworkStateManager.instance.mNetWorkStateCallback.observe(viewLifecycleOwner,
+                NetworkStateManager.instance.mNetworkStateCallback.observe(viewLifecycleOwner,
                     Observer {
                         //不是首次订阅时调用方法，防止数据第一次监听错误
                         if (!isFirst) {

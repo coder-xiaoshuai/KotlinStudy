@@ -121,12 +121,17 @@ dependencies {
     implementation project(path: ':common-ui')
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     implementation 'com.google.android.material:material:1.2.0'
+
+
     //单元测试相关
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     def dependencies = rootProject.ext.dependencies
+
+    implementation dependencies.lifecycle_extensions
+    implementation dependencies.lifecycle_runtime
 
     //方便查看数据
     implementation dependencies.stetho
