@@ -11,6 +11,7 @@ import com.example.common.utils.ViewUtils
 import com.example.common_ui.base.BaseActivity
 import com.example.kotlinstudy.R
 import com.example.kotlinstudy.adapter.MainStudyListAdapter
+import com.example.kotlinstudy.bean.EventShowDialog
 import com.example.kotlinstudy.bean.StudyListBean
 import com.example.kotlinstudy.recyclerview.BaseRecyclerAdapter
 import com.example.kotlinstudy.topactivity.TopActivity
@@ -18,6 +19,7 @@ import com.example.kotlinstudy.utils.DateUtils
 import com.example.kotlinstudy.view.ClickSpanTextView
 import com.example.kotlinstudy.view.helper.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
+import org.greenrobot.eventbus.EventBus
 
 class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<StudyListBean> {
     private var mBackPressed: Long = 0
@@ -67,6 +69,7 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
         categoryList.add(StudyListBean("question", ContextCompat.getColor(this,R.color.color_card9)))
         categoryList.add(StudyListBean("robust", ContextCompat.getColor(this,R.color.color_card10)))
         categoryList.add(StudyListBean("网络状态", ContextCompat.getColor(this,R.color.color_card11)))
+        categoryList.add(StudyListBean("最小化测试", ContextCompat.getColor(this,R.color.color_card12)))
         val mainAdapter = MainStudyListAdapter(this,categoryList)
         mainAdapter.setOnItemClickListener(this)
         rv_study_list.layoutManager = GridLayoutManager(this, 2)
@@ -118,6 +121,7 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
 //                val intent = Intent(this, FlutterActivity::class.java)
 //                startActivity(intent)
 //                ToastUtils.show("暂未开放该功能")
+                EventBus.getDefault().post(EventShowDialog())
             }
             5 -> {
                 val intent = Intent(this, ShowCustomActivity::class.java)
@@ -145,6 +149,11 @@ class MainActivity : BaseActivity(), BaseRecyclerAdapter.OnItemClickListener<Stu
 
             10 -> {
                 val intent = Intent(this, NetworkChangeActivity::class.java)
+                startActivity(intent)
+            }
+
+            11 -> {
+                val intent = Intent(this, SingleInstanceActivity::class.java)
                 startActivity(intent)
             }
             else -> {

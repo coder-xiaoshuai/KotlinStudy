@@ -141,6 +141,11 @@
         <activity android:name=".activity.NetworkChangeActivity"
             android:screenOrientation="portrait" />
 
+
+        <activity android:name=".activity.SingleInstanceActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance" />
+
         <service
             android:name=".topactivity.WatchingService"
             android:enabled="@bool/use_watching_service" />

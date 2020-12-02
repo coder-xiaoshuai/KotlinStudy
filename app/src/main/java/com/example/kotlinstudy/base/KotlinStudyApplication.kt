@@ -93,6 +93,7 @@ class KotlinStudyApplication : Application(), ViewModelStoreOwner {
                 activityCount--
                 if (activityCount <= 0) {
                     //应用进入后台
+                    ToastUtils.show("进入后台")
                 }
             }
 
